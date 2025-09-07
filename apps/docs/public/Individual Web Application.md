@@ -1,5 +1,5 @@
-### User Stories:
-# Learner User Stories 
+# User Stories:
+### Learner User Stories 
 I want to view and complete assignments.
 
 I want to look at my grades.
@@ -10,7 +10,7 @@ I want to view my different courses.
 
 I want to message my instructor/TA.
 
-# Instructor User Stories 
+### Instructor User Stories 
 I want to create assignments.
 
 I want to view my assignments in a student view.
@@ -25,7 +25,7 @@ I want to be able to send feedback to my students.
 
 I want to be able to communicate with my students easily.
 
-# Administrator User Stories 
+### Administrator User Stories 
 I want to be able to create courses, assign roles to users, and manage accounts.
 
 I want to be able to view statistics on the current users and activity on a dashboard.
