@@ -1,0 +1,83 @@
+erDiagram
+    USERS ||--o{ ENROLLMENTS : has
+    USERS ||--o{ MESSAGES : sends
+    USERS ||--o{ USER_ROLES : has
+    COURSES ||--o{ ENROLLMENTS : has
+    COURSES ||--o{ ASSIGNMENTS : has
+    COURSES ||--|| USERS : taught_by
+    ASSIGNMENTS ||--o{ SUBMISSIONS : has
+    ASSIGNMENTS ||--o{ PROBLEMS : has
+    SUBMISSIONS ||--o{ GRADES : has
+    ROLES ||--o{ USER_ROLES : has
+
+    USERS {
+        int UserID PK
+        string Username
+        string Password
+        string Email
+        string Role
+    }
+    
+    COURSES {
+        int CourseID PK
+        string CourseName
+        int InstructorID FK
+    }
+
+    ENROLLMENTS {
+        int EnrollmentID PK
+        int UserID FK
+        int CourseID FK
+        date EnrollmentDate
+    }
+
+    ASSIGNMENTS {
+        int AssignmentID PK
+        int CourseID FK
+        string AssignmentTitle
+        date DueDate
+        string Description
+    }
+
+    SUBMISSIONS {
+        int SubmissionID PK
+        int AssignmentID FK
+        int UserID FK
+        date SubmissionDate
+        string FilePath
+    }
+
+    GRADES {
+        int GradeID PK
+        int SubmissionID FK
+        float Score
+        string Feedback
+        date GradingDate
+    }
+    
+    MESSAGES {
+        int MessageID PK
+        int SenderID FK
+        int RecipientID FK
+        string Subject
+        string MessageBody
+        timestamp Timestamp
+    }
+
+    PROBLEMS {
+        int ProblemID PK
+        int AssignmentID FK
+        string ProblemType
+        string ProblemDetails
+    }
+    
+    ROLES {
+        int RoleID PK
+        string RoleName
+    }
+
+    USER_ROLES {
+        int UserRoleID PK
+        int UserID FK
+        int RoleID FK
+    }
