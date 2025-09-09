@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import Link from "next/link";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,7 +24,49 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <div style={{ display: 'flex', minHeight: '100vh', fontSize: '30px' }}>
+          <nav
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              position: 'fixed',
+              left: '2rem',
+              top: '5rem',
+              zIndex: 1000,
+              backgroundColor: "white",
+              color: "#383838",
+            }}
+          >
+            <Link href="/">Dashboard</Link>
+            <Link href="/courses">Courses</Link>
+            <Link href="/messages">Messages</Link>
+            <Link href="/settings">Settings</Link>
+          </nav>
+          <Link
+            href="/login"
+            style={{
+              position: 'fixed',
+              top: '.5rem',
+              right: '2rem',
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              background: '#ffffffff',
+              border: '4px solid #333',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#222',
+              fontSize: '18px',
+            }}
+            aria-label="Login"
+          >
+            :)
+          </Link>
+          <div style={{ flex: 1 }}>{children}</div>
+        </div>
       </body>
     </html>
   );

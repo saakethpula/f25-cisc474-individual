@@ -3,28 +3,35 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*", "env:PORT", "env:HOST"],
-      "outputs": [
-        "build/**",
-        ".vercel/**",
-        "dist/**",
-        ".next/**",
-        "!.next/cache/**"
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*",
+        "env:PORT",
+        "env:HOST"
       ]
     },
     "test": {
-      "outputs": ["coverage/**"],
       "dependsOn": []
     },
     "lint": {
-      "dependsOn": ["^build", "^lint"]
+      "dependsOn": [
+        "^build",
+        "^lint"
+      ]
     },
     "check-types": {
-      "dependsOn": ["^build", "^check-types"]
+      "dependsOn": [
+        "^build",
+        "^check-types"
+      ]
     },
     "dev": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": false,
       "persistent": true
     },
