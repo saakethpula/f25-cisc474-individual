@@ -1,32 +1,34 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import Link from "next/link";
+import React from "react";
 
-type Props = Omit<ImageProps, "src"> & {
-    srcLight: string;
-    srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-    const { srcLight, srcDark, ...rest } = props;
-
+export default function SettingsPage() {
     return (
-        <>
-            <Image {...rest} src={srcLight} className="imgLight" />
-            <Image {...rest} src={srcDark} className="imgDark" />
-        </>
-    );
-};
-
-export default function Home() {
-    return (
-        <div>
-            <h1 style={{ textAlign: "center", color: "#383838", background: "#b6fff9ff" }}>
-                Dashboard
-            </h1>
-            <p style={{ textAlign: "center", color: "#383838" }}>
-                Welcome to the dashboard! Here you'll find helpful information at a glance.
-            </p>
-        </div>
+        <main>
+            <h1 style={{ textAlign: "center", color: "#383838", background: "#b6fff9ff" }}>Login</h1>
+            <p style={{ textAlign: "center", color: "#383838" }}>Please enter your credentials to log in.</p>
+            <form style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", marginTop: "2rem" }}>
+                <input style={{ marginBottom: "1rem", padding: "0.5rem", fontSize: "1rem" }}
+                    type="text"
+                    placeholder="Username"
+                />
+                <input style={{ marginBottom: "1rem", padding: "0.5rem", fontSize: "1rem" }}
+                    type="password"
+                    placeholder="Password"
+                />
+                <Link
+                    href="/dashboard"
+                    style={{
+                        padding: '0.5rem .5rem',
+                        background: '#383838',
+                        borderRadius: '4px',
+                        fontSize: '1rem',
+                    }}
+                    aria-label="Login"
+                >
+                    Login
+                </Link>
+            </form>
+        </main>
     );
 }
+
