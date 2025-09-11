@@ -1,30 +1,27 @@
 import React from "react";
 import Link from "next/link";
+import "./messages.css";
 export default function MessagesPage() {
     return (
 
-        <main>
-            <nav
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    gap: '1rem',
-                    position: 'fixed',
-                    left: '2rem',
-                    top: '5rem',
-                    zIndex: 1000,
-                    backgroundColor: "white",
-                    color: "#383838",
-                }}
-            >
-                <Link href="/dashboard" style={{ background: "#b6fff9ff", borderRadius: "20%", border: "1px solid gray" }}>Dashboard</Link>
-                <Link href="/courses" style={{ background: "#b6fff9ff", borderRadius: "20%", border: "1px solid gray" }}>Courses</Link>
-                <Link href="/messages" style={{ background: "#b6fff9ff", borderRadius: "20%", border: "1px solid gray" }}>Messages</Link>
-                <Link href="/settings" style={{ background: "#b6fff9ff", borderRadius: "20%", border: "1px solid gray" }}>Settings</Link>
+        <main className="messagesContainer">
+            <nav className="leftNav">
+                <Link
+                    href="/"
+                    className="loginBtn"
+                    aria-label="Login"
+                >
+                    :)
+                </Link>
+                <Link href="/dashboard">‎ Dashboard</Link>
+                <Link href="/courses">‎ Courses</Link>
+                <Link href="/messages">‎ Messages</Link>
+                <Link href="/settings">‎ Settings</Link>
             </nav>
-            <h1 style={{ textAlign: "center", color: "#383838", background: "#b6fff9ff" }}>Messages</h1>
-            <p style={{ textAlign: "center", color: "#383838" }}>This is the messages page.</p>
+            <div className="mainContent">
+                <h1 className="mainHeader">Messages</h1>
+                <p className="mainDescription">This is the messages page.</p>
+            </div>
         </main>
     );
 }

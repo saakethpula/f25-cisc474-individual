@@ -1,5 +1,4 @@
 import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
 import "./dashboard.css";
 import Link from "next/link";
 import courses from "./courses.json";
