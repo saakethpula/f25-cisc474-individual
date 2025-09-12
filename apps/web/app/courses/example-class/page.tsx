@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import "./courses.css";
+import "./class.css";
 const CoursesPage = () => {
     return (
         <main className="coursesContainer">
@@ -18,10 +18,14 @@ const CoursesPage = () => {
                 <Link href="/settings"> Settings</Link>
             </nav>
             <div className="mainContent">
-                <h1 className="mainHeader">Courses</h1>
-                <p className="mainDescription">Welcome to the Courses page.</p>
+                <h1 className="mainHeader">Example Course</h1>
+                <p className="mainDescription">Welcome to the Example Course page.</p>
                 <div className="coursesGrid">
-                    <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
+                    <div className="courseSquare">
+                        <Link href="/courses/example-class/assignment-1" className="assignmentLink">
+                            View Assignment
+                        </Link>
+                    </div>
                 </div>
             </div>
         </main>

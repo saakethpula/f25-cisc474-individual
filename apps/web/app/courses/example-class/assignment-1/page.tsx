@@ -1,31 +1,29 @@
 import React from "react";
 import Link from "next/link";
-import "./courses.css";
-const CoursesPage = () => {
+import "../class.css";
+
+const Assignment1Start = () => {
     return (
         <main className="coursesContainer">
             <nav className="leftNav">
-                <Link
-                    href="/"
-                    className="loginBtn"
-                    aria-label="Login"
-                >
-                    :)
-                </Link>
+                <Link href="/" className="loginBtn" aria-label="Login">:)</Link>
                 <Link href="/dashboard"> Dashboard</Link>
                 <Link href="/courses"> Courses</Link>
                 <Link href="/messages"> Messages</Link>
                 <Link href="/settings"> Settings</Link>
             </nav>
             <div className="mainContent">
-                <h1 className="mainHeader">Courses</h1>
-                <p className="mainDescription">Welcome to the Courses page.</p>
+                <h1 className="mainHeader">Assignment 1</h1>
                 <div className="coursesGrid">
-                    <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
+                    <Link href="/courses/example-class/assignment-1/q1">
+                        <button className="courseSquare">
+                            Start Assignment
+                        </button>
+                    </Link>
                 </div>
             </div>
         </main>
     );
 };
 
-export default CoursesPage;
+export default Assignment1Start;

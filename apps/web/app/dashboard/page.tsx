@@ -31,10 +31,10 @@ export default function Home() {
                 >
                     :)
                 </Link>
-                <Link href="/dashboard">‎ Dashboard</Link>
-                <Link href="/courses">‎ Courses</Link>
-                <Link href="/messages">‎ Messages</Link>
-                <Link href="/settings">‎ Settings</Link>
+                <Link href="/dashboard"> Dashboard</Link>
+                <Link href="/courses"> Courses</Link>
+                <Link href="/messages"> Messages</Link>
+                <Link href="/settings"> Settings</Link>
             </nav>
             {/* Main content */}
             <div className="mainContent">
@@ -75,7 +75,7 @@ export default function Home() {
                                     htmlFor={`todo${idx}`}
                                     className="toDoListItems"
                                 >
-                                    ‎ {todo.task}
+                                    {todo.task}
                                 </label>
                             </li>
                         )
