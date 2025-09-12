@@ -26,6 +26,11 @@ const CoursesPage = () => {
                             View Assignment
                         </Link>
                     </div>
+                    <div className="courseSquare">
+                        <Link href="/courses/example-class/example-grades" className="assignmentLink">
+                            View Grades
+                        </Link>
+                    </div>
                 </div>
             </div>
         </main>

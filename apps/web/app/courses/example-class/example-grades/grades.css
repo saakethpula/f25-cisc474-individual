@@ -1,4 +1,3 @@
-/* Grades Table Styles */
 .gradesTable {
     width: 100%;
     margin-top: 2rem;
@@ -32,7 +31,6 @@
     background: #f8f8f8;
 }
 
-/* Navigation buttons fixed to bottom right */
 .navButtons {
     position: fixed;
     bottom: 2rem;
@@ -43,6 +41,127 @@
 }
 
 .coursesContainer {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.leftNav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    z-index: 1000;
+    background: #414141ff;
+    color: #ffffffff;
+    width: 150px;
+    font-size: 1.5rem;
+}
+
+.loginBtn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #414141ff;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 1rem;
+}
+
+.mainContent {
+    flex: 1;
+    width: 100%;
+}
+
+.mainHeader {
+    text-align: center;
+    color: #ffffffff;
+    background: #414141ff;
+    font-size: 2rem;
+}
+
+.mainDescription {
+    text-align: center;
+    color: #000000ff;
+    font-size: 1.3rem;
+}
+
+.coursesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.courseSquare {
+    background: #dfdfdf;
+    border: 2px solid #414141ff;
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    min-width: 180px;
+    min-height: 120px;
+    max-width: 220px;
+    max-height: 120px;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.courseName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.courseGrade {
+    color: #222;
+    font-size: 1rem;
+}
+
+.toDoList {
+    width: 20%;
+    right: 2rem;
+    background: #414141ff;
+    border: 1.5px solid #414141ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    z-index: 1000;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.toDoHeader {
+    text-align: center;
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ffffffff;
+    margin-top: 1rem;
+}
+
+.toDoListItemsContainer {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toDoListItems {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.dashboardContainer {
     display: flex;
     min-height: 100vh;
     position: relative;
