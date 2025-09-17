@@ -1,5 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
 
 datasource db {
   provider  = "postgresql"
@@ -7,14 +9,92 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/client"
+model User {
+  id                                Int          @id @default(autoincrement())
+  username                          String       @unique
+  email                             String       @unique
+  passwordHash                      String
+  role                              Role         @default(STUDENT)
+  Course                            Course[]
+  Enrollment                        Enrollment[]
+  Message_Message_recipientIdToUser Message[]    @relation("Message_recipientIdToUser")
+  Message_Message_senderIdToUser    Message[]    @relation("Message_senderIdToUser")
+  Submission                        Submission[]
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
+model Assignment {
+  id              Int          @id @default(autoincrement())
+  assignmentTitle String
+  description     String?
+  dueDate         DateTime
+  maxPoints       Int
+  courseId        Int
+  Course          Course       @relation(fields: [courseId], references: [id])
+  Submission      Submission[]
+}
+
+model Course {
+  id              Int          @id @default(autoincrement())
+  courseName      String
+  syllabusContent String?
+  instructorId    Int
+  Assignment      Assignment[]
+  User            User         @relation(fields: [instructorId], references: [id])
+  Enrollment      Enrollment[]
+}
+
+model Enrollment {
+  studentId Int
+  courseId  Int
+  Course    Course @relation(fields: [courseId], references: [id])
+  User      User   @relation(fields: [studentId], references: [id])
+
+  @@id([studentId, courseId])
+}
+
+model Grade {
+  id           Int        @id @default(autoincrement())
+  score        Float
+  feedback     String?
+  gradingDate  DateTime   @default(now())
+  submissionId Int        @unique
+  Submission   Submission @relation(fields: [submissionId], references: [id])
+}
+
+model Message {
+  id                             Int           @id @default(autoincrement())
+  subject                        String
+  body                           String
+  timestamp                      DateTime      @default(now())
+  status                         MessageStatus @default(UNREAD)
+  senderId                       Int
+  recipientId                    Int
+  parentMessageId                Int?
+  Message                        Message?      @relation("MessageToMessage", fields: [parentMessageId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  other_Message                  Message[]     @relation("MessageToMessage")
+  User_Message_recipientIdToUser User          @relation("Message_recipientIdToUser", fields: [recipientId], references: [id])
+  User_Message_senderIdToUser    User          @relation("Message_senderIdToUser", fields: [senderId], references: [id])
+}
+
+model Submission {
+  id             Int        @id @default(autoincrement())
+  filePath       String
+  submissionDate DateTime   @default(now())
+  assignmentId   Int
+  studentId      Int
+  Grade          Grade?
+  Assignment     Assignment @relation(fields: [assignmentId], references: [id])
+  User           User       @relation(fields: [studentId], references: [id])
+}
+
+enum MessageStatus {
+  UNREAD
+  READ
+  ARCHIVED
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
 }
