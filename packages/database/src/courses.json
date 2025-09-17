@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "courseName": "Introduction to Computer Science",
+        "syllabusContent": "Covers programming basics, algorithms, and problem-solving using Python. Includes weekly labs and a final project.",
+        "instructorId": 11
+    },
+    {
+        "id": 2,
+        "courseName": "Data Structures and Algorithms",
+        "syllabusContent": "Focuses on fundamental data structures, algorithm analysis, and practical coding assignments in Java.",
+        "instructorId": 5
+    },
+    {
+        "id": 3,
+        "courseName": "Database Systems",
+        "syllabusContent": "Introduction to relational databases, SQL, normalization, and database design. Includes hands-on projects.",
+        "instructorId": 5
+    },
+    {
+        "id": 4,
+        "courseName": "Web Development",
+        "syllabusContent": "Covers HTML, CSS, JavaScript, and modern frameworks. Students build and deploy a web application.",
+        "instructorId": 1
+    },
+    {
+        "id": 5,
+        "courseName": "Software Engineering",
+        "syllabusContent": "Principles of software design, testing, and project management. Includes a team-based software project.",
+        "instructorId": 17
+    }
+]

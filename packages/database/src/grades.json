@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "score": 69.47,
+        "feedback": "Us professional compare rise.",
+        "gradingDate": "2025-09-12T18:24:20.899301Z",
+        "submissionId": 15
+    },
+    {
+        "id": 2,
+        "score": 90.62,
+        "feedback": "Type bit on.",
+        "gradingDate": "2025-09-13T18:24:20.899422Z",
+        "submissionId": 24
+    },
+    {
+        "id": 3,
+        "score": 7.65,
+        "feedback": "You need to review the basics. Please revisit the lecture notes and seek help during office hours.",
+        "gradingDate": "2025-09-15T18:24:20.899441Z",
+        "submissionId": 1
+    },
+    {
+        "id": 4,
+        "score": 1.67,
+        "feedback": "Your analysis is incomplete. Please provide more detailed explanations and check your calculations.",
+        "gradingDate": "2025-09-17T18:24:20.899457Z",
+        "submissionId": 16
+    },
+    {
+        "id": 5,
+        "score": 3.06,
+        "feedback": "Your submission was missing key requirements. Please follow the assignment instructions more closely.",
+        "gradingDate": "2025-09-15T18:24:20.899473Z",
+        "submissionId": 12
+    },
+    {
+        "id": 6,
+        "score": 21.59,
+        "feedback": "Some parts of your code work, but there are logical errors. Please debug and resubmit.",
+        "gradingDate": "2025-09-15T18:24:20.899489Z",
+        "submissionId": 10
+    },
+    {
+        "id": 7,
+        "score": 59.03,
+        "feedback": "Good effort! Most of your answers are correct, but double-check your work for minor mistakes.",
+        "gradingDate": "2025-09-15T18:24:20.899504Z",
+        "submissionId": 25
+    },
+    {
+        "id": 8,
+        "score": 6.31,
+        "feedback": "You attempted all questions, but your code does not run as expected. Please test your solutions.",
+        "gradingDate": "2025-09-13T18:24:20.899519Z",
+        "submissionId": 7
+    },
+    {
+        "id": 9,
+        "score": 62.52,
+        "feedback": "Great job! Your explanations are clear and your code is well-documented.",
+        "gradingDate": "2025-09-17T18:24:20.899533Z",
+        "submissionId": 14
+    },
+    {
+        "id": 10,
+        "score": 51.36,
+        "feedback": "You met the requirements, but your code could be more efficient. Consider optimizing your solution.",
+        "gradingDate": "2025-09-12T18:24:20.899548Z",
+        "submissionId": 5
+    },
+    {
+        "id": 11,
+        "score": 58.45,
+        "feedback": "Excellent work! You demonstrated a strong understanding of the material.",
+        "gradingDate": "2025-09-13T18:24:20.899563Z",
+        "submissionId": 11
+    },
+    {
+        "id": 12,
+        "score": 48.97,
+        "feedback": "Your SQL queries are mostly correct, but a few results are missing. Please review JOIN operations.",
+        "gradingDate": "2025-09-17T18:24:20.899578Z",
+        "submissionId": 18
+    },
+    {
+        "id": 13,
+        "score": 9.14,
+        "feedback": "You struggled with recursion. Please review the examples discussed in class.",
+        "gradingDate": "2025-09-14T18:24:20.899613Z",
+        "submissionId": 6
+    },
+    {
+        "id": 14,
+        "score": 7.6,
+        "feedback": "Your CSS layout works, but could be improved for better responsiveness.",
+        "gradingDate": "2025-09-16T18:24:20.899637Z",
+        "submissionId": 23
+    },
+    {
+        "id": 15,
+        "score": 45.68,
+        "feedback": "Your project proposal is creative, but lacks a clear timeline. Please revise and resubmit.",
+        "gradingDate": "2025-09-14T18:24:20.899657Z",
+        "submissionId": 4
+    },
+    {
+        "id": 16,
+        "score": 5.45,
+        "feedback": "You did not submit all required files. Please ensure all parts are included next time.",
+        "gradingDate": "2025-09-12T18:24:20.899673Z",
+        "submissionId": 19
+    },
+    {
+        "id": 17,
+        "score": 60.66,
+        "feedback": "Good job reflecting on your team's sprint. Your feedback is constructive and actionable.",
+        "gradingDate": "2025-09-12T18:24:20.899689Z",
+        "submissionId": 20
+    },
+    {
+        "id": 18,
+        "score": 78.18,
+        "feedback": "Your code is well-structured and your report is thorough. Keep up the good work!",
+        "gradingDate": "2025-09-14T18:24:20.899704Z",
+        "submissionId": 3
+    },
+    {
+        "id": 19,
+        "score": 30.97,
+        "feedback": "You answered most questions correctly, but missed a few key concepts. Review the assignment rubric.",
+        "gradingDate": "2025-09-13T18:24:20.899719Z",
+        "submissionId": 2
+    },
+    {
+        "id": 20,
+        "score": 53.4,
+        "feedback": "Excellent! You exceeded expectations on this assignment.",
+        "gradingDate": "2025-09-15T18:24:20.899734Z",
+        "submissionId": 17
+    }
+]

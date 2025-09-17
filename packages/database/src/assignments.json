@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "assignmentTitle": "Linked List Implementation",
+        "description": "Implement a singly linked list in Java and provide unit tests for all operations.",
+        "dueDate": "2025-10-10T18:24:20.893261Z",
+        "maxPoints": 81,
+        "courseId": 2
+    },
+    {
+        "id": 2,
+        "assignmentTitle": "Responsive Portfolio Website",
+        "description": "Create a personal portfolio website using HTML, CSS, and JavaScript. The site must be responsive and include at least three sections.",
+        "dueDate": "2025-09-19T18:24:20.893315Z",
+        "maxPoints": 81,
+        "courseId": 4
+    },
+    {
+        "id": 3,
+        "assignmentTitle": "Python Basics Quiz",
+        "description": "Complete the online quiz covering Python syntax, variables, and control flow.",
+        "dueDate": "2025-09-20T18:24:20.893363Z",
+        "maxPoints": 95,
+        "courseId": 1
+    },
+    {
+        "id": 4,
+        "assignmentTitle": "Sorting Algorithms Analysis",
+        "description": "Compare the performance of bubble sort, merge sort, and quicksort on large datasets. Submit a report with your findings.",
+        "dueDate": "2025-10-14T18:24:20.893407Z",
+        "maxPoints": 25,
+        "courseId": 1
+    },
+    {
+        "id": 5,
+        "assignmentTitle": "Software Requirements Document",
+        "description": "Write a requirements document for a proposed software project, including user stories and acceptance criteria.",
+        "dueDate": "2025-09-23T18:24:20.893539Z",
+        "maxPoints": 48,
+        "courseId": 5
+    },
+    {
+        "id": 6,
+        "assignmentTitle": "Binary Search Tree Project",
+        "description": "Implement a binary search tree in Java and demonstrate insert, delete, and search operations.",
+        "dueDate": "2025-09-29T18:24:20.893578Z",
+        "maxPoints": 93,
+        "courseId": 2
+    },
+    {
+        "id": 7,
+        "assignmentTitle": "Loops and Functions Lab",
+        "description": "Write Python programs that use loops and functions to solve basic problems. Submit your code and screenshots of output.",
+        "dueDate": "2025-10-10T18:24:20.893682Z",
+        "maxPoints": 66,
+        "courseId": 1
+    },
+    {
+        "id": 8,
+        "assignmentTitle": "Database Design Project",
+        "description": "Design an ER diagram and implement the schema in SQL for a small business scenario.",
+        "dueDate": "2025-10-13T18:24:20.893722Z",
+        "maxPoints": 57,
+        "courseId": 5
+    },
+    {
+        "id": 9,
+        "assignmentTitle": "Algorithm Complexity Homework",
+        "description": "Solve problems related to time and space complexity. Show all work and explanations.",
+        "dueDate": "2025-10-07T18:24:20.893758Z",
+        "maxPoints": 96,
+        "courseId": 2
+    },
+    {
+        "id": 10,
+        "assignmentTitle": "Agile Sprint Retrospective",
+        "description": "Write a reflection on your team's first agile sprint, including what went well and what could be improved.",
+        "dueDate": "2025-09-18T18:24:20.893793Z",
+        "maxPoints": 44,
+        "courseId": 5
+    },
+    {
+        "id": 11,
+        "assignmentTitle": "SQL Query Practice",
+        "description": "Write SQL queries to retrieve and manipulate data from a sample database. Submit your queries and results.",
+        "dueDate": "2025-09-24T18:24:20.893829Z",
+        "maxPoints": 14,
+        "courseId": 3
+    },
+    {
+        "id": 12,
+        "assignmentTitle": "JavaScript DOM Manipulation",
+        "description": "Create a web page that uses JavaScript to dynamically update the DOM based on user input.",
+        "dueDate": "2025-10-04T18:24:20.893864Z",
+        "maxPoints": 46,
+        "courseId": 4
+    },
+    {
+        "id": 13,
+        "assignmentTitle": "Recursion Worksheet",
+        "description": "Complete problems involving recursion in Java. Submit your code and explanations.",
+        "dueDate": "2025-10-14T18:24:20.893910Z",
+        "maxPoints": 26,
+        "courseId": 2
+    },
+    {
+        "id": 14,
+        "assignmentTitle": "CSS Flexbox Layout",
+        "description": "Build a web page layout using CSS Flexbox. The layout should be responsive and visually appealing.",
+        "dueDate": "2025-10-11T18:24:20.893948Z",
+        "maxPoints": 37,
+        "courseId": 2
+    },
+    {
+        "id": 15,
+        "assignmentTitle": "Final Project Proposal",
+        "description": "Submit a proposal for your final project, including objectives, technologies, and a timeline.",
+        "dueDate": "2025-09-30T18:24:20.893983Z",
+        "maxPoints": 61,
+        "courseId": 1
+    }
+]

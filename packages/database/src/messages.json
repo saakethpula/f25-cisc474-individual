@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "subject": "Question about Assignment 2",
+        "body": "Hi Professor, I'm having trouble with the responsive design part of the portfolio website. Could you provide a hint?",
+        "timestamp": "2025-09-18T10:00:00Z",
+        "status": "UNREAD",
+        "senderId": 2,
+        "recipientId": 1
+    },
+    {
+        "id": 2,
+        "subject": "Re: Question about Assignment 2",
+        "body": "Of course. Take a look at the CSS Flexbox resources I posted in the course materials. That should point you in the right direction.",
+        "timestamp": "2025-09-18T11:30:00Z",
+        "status": "READ",
+        "senderId": 1,
+        "recipientId": 2,
+        "parentMessageId": 1
+    },
+    {
+        "id": 3,
+        "subject": "Database Project - Team Formation",
+        "body": "Hey Sara, do you want to team up for the Database Design Project?",
+        "timestamp": "2025-09-16T14:20:00Z",
+        "status": "READ",
+        "senderId": 9,
+        "recipientId": 4
+    },
+    {
+        "id": 4,
+        "subject": "Re: Database Project - Team Formation",
+        "body": "Yeah, that sounds great! Let's connect after class tomorrow to discuss ideas.",
+        "timestamp": "2025-09-16T16:05:00Z",
+        "status": "READ",
+        "senderId": 4,
+        "recipientId": 9,
+        "parentMessageId": 3
+    },
+    {
+        "id": 5,
+        "subject": "Office Hours Request",
+        "body": "Professor Chapman, would it be possible to schedule a brief meeting to go over my feedback on the Linked List assignment? Thanks, David.",
+        "timestamp": "2025-09-17T09:00:00Z",
+        "status": "UNREAD",
+        "senderId": 7,
+        "recipientId": 5
+    }
+]

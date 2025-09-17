@@ -1,0 +1,212 @@
+[
+    {
+        "id": 1,
+        "username": "andersonpaula1",
+        "email": "larry63@example.org",
+        "passwordHash": "990943e229445d69e9d6e5c3308fd5ae7f0b7593dee331c2c9437f28cbdfc0ce",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 2,
+        "username": "ljones2",
+        "email": "brownkatherine@example.net",
+        "passwordHash": "94195feb9cc8a33ec174adbfb1bb29260c1ba644f504457d6048d13b56fa17e8",
+        "role": "STUDENT"
+    },
+    {
+        "id": 3,
+        "username": "andreamorales3",
+        "email": "andrewhansen@example.net",
+        "passwordHash": "e6b169591989025d0e6a8a8ffdf99aa21cfc9e03ffc673c0a84961d5a3d92123",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 4,
+        "username": "cooksara4",
+        "email": "carl58@example.net",
+        "passwordHash": "58dfc7017c15e036a9fb9720737cf75d61030e1494fce13ecb8ad2a415fff462",
+        "role": "STUDENT"
+    },
+    {
+        "id": 5,
+        "username": "stephenchapman5",
+        "email": "schmittmichael@example.net",
+        "passwordHash": "c79b4e4be887d94b3ff83a88068a8848b4aa834f52c7cff99ec18f3be08dafb6",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 6,
+        "username": "meganduffy6",
+        "email": "nathanshah@example.net",
+        "passwordHash": "f15beaed6fc9d817c9bf75d8f8d7e328e4f5053d69306151b5f3bbfa97ad19e7",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 7,
+        "username": "davidguzman7",
+        "email": "joshua75@example.net",
+        "passwordHash": "6b720b60b7c77a26e2b529550fa68c67dca6f4f8467ee4004bd1442b6dae58a2",
+        "role": "STUDENT"
+    },
+    {
+        "id": 8,
+        "username": "jaydean8",
+        "email": "andresbrown@example.net",
+        "passwordHash": "fee519913e3ad606fb7464a8e0ab6e0b29697f53ff551d0917a0f4f6d948a899",
+        "role": "ADMIN"
+    },
+    {
+        "id": 9,
+        "username": "kgriffith9",
+        "email": "samantha87@example.com",
+        "passwordHash": "70435c75409a261613466d71d523000da896b5cf33506c0822645a58355995a6",
+        "role": "STUDENT"
+    },
+    {
+        "id": 10,
+        "username": "michaelmiller10",
+        "email": "ozimmerman@example.com",
+        "passwordHash": "d70cdfb0130cbdabe6e96e7b9ae28f82a5856ea205fe26a5cc040405f057028f",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 11,
+        "username": "gdickerson11",
+        "email": "james03@example.com",
+        "passwordHash": "367cb8354a81389d1023115144bc78808abcd06149175c82c216368495fcc4ef",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 12,
+        "username": "pstephens12",
+        "email": "rclayton@example.com",
+        "passwordHash": "df6e5d8afefbad18ae48fbba18af6fc740d307c9c57988584090c0cda15d9304",
+        "role": "STUDENT"
+    },
+    {
+        "id": 13,
+        "username": "krobinson13",
+        "email": "qdodson@example.com",
+        "passwordHash": "8af1774fb75bd24e2b3c56aa442832a91eeafb7f9d72a926b5193ffc5567cce9",
+        "role": "STUDENT"
+    },
+    {
+        "id": 14,
+        "username": "vickiforbes14",
+        "email": "hammondchristine@example.net",
+        "passwordHash": "4ae3739e85fb79d33aab3dd83ceef6d9dd86c832d12c16ddeb67c707080a64c9",
+        "role": "ADMIN"
+    },
+    {
+        "id": 15,
+        "username": "harveysteven15",
+        "email": "jamiebates@example.com",
+        "passwordHash": "e216a12647ab7d3121e4f17257b4438898b6dc8e57cbaf05895990e77a289b01",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 16,
+        "username": "westbailey16",
+        "email": "eugenegarcia@example.com",
+        "passwordHash": "894fd45d8123118e0641038c350ada3ce3e80d7c98702657cadd8c21d6ff7eab",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 17,
+        "username": "derrick2417",
+        "email": "othomas@example.com",
+        "passwordHash": "991cb89ce3d469a3a5cfbd0c7fa64fcb435f9b11fb011c182a39c79be8ca8b36",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 18,
+        "username": "kbernard18",
+        "email": "patelstephanie@example.net",
+        "passwordHash": "1b215600e16d0e328c5ccd7b3894b4ca9e100916399480954acfd13752fdec26",
+        "role": "INSTRUCTOR"
+    },
+    {
+        "id": 19,
+        "username": "jonesashley19",
+        "email": "carlosgray@example.com",
+        "passwordHash": "f5b09459a890bde0669ce863cfd398acda010ba399c846386ba8cfe6196967b3",
+        "role": "STUDENT"
+    },
+    {
+        "id": 20,
+        "username": "sfitzpatrick20",
+        "email": "nicole04@example.com",
+        "passwordHash": "64b8535707be25204f744172559412fb87a796ce003029cab1c9b60faf1c392c",
+        "role": "STUDENT"
+    },
+    {
+        "id": 21,
+        "username": "emilyturner21",
+        "email": "emily.turner21@example.com",
+        "passwordHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+        "role": "STUDENT"
+    },
+    {
+        "id": 22,
+        "username": "robertwilliams22",
+        "email": "robert.williams22@example.com",
+        "passwordHash": "b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1",
+        "role": "STUDENT"
+    },
+    {
+        "id": 23,
+        "username": "sarahlee23",
+        "email": "sarah.lee23@example.com",
+        "passwordHash": "c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2",
+        "role": "STUDENT"
+    },
+    {
+        "id": 24,
+        "username": "danielmartin24",
+        "email": "daniel.martin24@example.com",
+        "passwordHash": "d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3",
+        "role": "STUDENT"
+    },
+    {
+        "id": 25,
+        "username": "ashleyclark25",
+        "email": "ashley.clark25@example.com",
+        "passwordHash": "e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4",
+        "role": "STUDENT"
+    },
+    {
+        "id": 26,
+        "username": "matthewdavis26",
+        "email": "matthew.davis26@example.com",
+        "passwordHash": "f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4e5",
+        "role": "STUDENT"
+    },
+    {
+        "id": 27,
+        "username": "oliviamoore27",
+        "email": "olivia.moore27@example.com",
+        "passwordHash": "g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4e5f6",
+        "role": "STUDENT"
+    },
+    {
+        "id": 28,
+        "username": "jamesking28",
+        "email": "james.king28@example.com",
+        "passwordHash": "h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4e5f6g7",
+        "role": "STUDENT"
+    },
+    {
+        "id": 29,
+        "username": "chloewilson29",
+        "email": "chloe.wilson29@example.com",
+        "passwordHash": "i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4e5f6g7h8",
+        "role": "STUDENT"
+    },
+    {
+        "id": 30,
+        "username": "benjaminwhite30",
+        "email": "benjamin.white30@example.com",
+        "passwordHash": "j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a1b2c3d4e5f6g7h8i9",
+        "role": "STUDENT"
+    }
+]
