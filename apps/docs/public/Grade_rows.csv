@@ -1,0 +1,21 @@
+id,score,feedback,gradingDate,submissionId
+1,69.47,Us professional compare rise.,2025-09-12 18:24:20.899,15
+2,90.62,Type bit on.,2025-09-13 18:24:20.899,24
+3,7.65,You need to review the basics. Please revisit the lecture notes and seek help during office hours.,2025-09-15 18:24:20.899,1
+4,1.67,Your analysis is incomplete. Please provide more detailed explanations and check your calculations.,2025-09-17 18:24:20.899,16
+5,3.06,Your submission was missing key requirements. Please follow the assignment instructions more closely.,2025-09-15 18:24:20.899,12
+6,21.59,"Some parts of your code work, but there are logical errors. Please debug and resubmit.",2025-09-15 18:24:20.899,10
+7,59.03,"Good effort! Most of your answers are correct, but double-check your work for minor mistakes.",2025-09-15 18:24:20.9,25
+8,6.31,"You attempted all questions, but your code does not run as expected. Please test your solutions.",2025-09-13 18:24:20.9,7
+9,62.52,Great job! Your explanations are clear and your code is well-documented.,2025-09-17 18:24:20.9,14
+10,51.36,"You met the requirements, but your code could be more efficient. Consider optimizing your solution.",2025-09-12 18:24:20.9,5
+11,58.45,Excellent work! You demonstrated a strong understanding of the material.,2025-09-13 18:24:20.9,11
+12,48.97,"Your SQL queries are mostly correct, but a few results are missing. Please review JOIN operations.",2025-09-17 18:24:20.9,18
+13,9.14,You struggled with recursion. Please review the examples discussed in class.,2025-09-14 18:24:20.9,6
+14,7.6,"Your CSS layout works, but could be improved for better responsiveness.",2025-09-16 18:24:20.9,23
+15,45.68,"Your project proposal is creative, but lacks a clear timeline. Please revise and resubmit.",2025-09-14 18:24:20.9,4
+16,5.45,You did not submit all required files. Please ensure all parts are included next time.,2025-09-12 18:24:20.9,19
+17,60.66,Good job reflecting on your team's sprint. Your feedback is constructive and actionable.,2025-09-12 18:24:20.9,20
+18,78.18,Your code is well-structured and your report is thorough. Keep up the good work!,2025-09-14 18:24:20.9,3
+19,30.97,"You answered most questions correctly, but missed a few key concepts. Review the assignment rubric.",2025-09-13 18:24:20.9,2
+20,53.4,Excellent! You exceeded expectations on this assignment.,2025-09-15 18:24:20.9,17

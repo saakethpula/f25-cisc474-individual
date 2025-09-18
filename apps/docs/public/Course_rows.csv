@@ -1,0 +1,6 @@
+id,courseName,syllabusContent,instructorId
+1,Introduction to Computer Science,"Covers programming basics, algorithms, and problem-solving using Python. Includes weekly labs and a final project.",11
+2,Data Structures and Algorithms,"Focuses on fundamental data structures, algorithm analysis, and practical coding assignments in Java.",5
+3,Database Systems,"Introduction to relational databases, SQL, normalization, and database design. Includes hands-on projects.",5
+4,Web Development,"Covers HTML, CSS, JavaScript, and modern frameworks. Students build and deploy a web application.",1
+5,Software Engineering,"Principles of software design, testing, and project management. Includes a team-based software project.",17

@@ -1,0 +1,6 @@
+id,subject,body,timestamp,status,senderId,recipientId,parentMessageId
+1,Question about Assignment 2,"Hi Professor, I'm having trouble with the responsive design part of the portfolio website. Could you provide a hint?",2025-09-18 10:00:00,UNREAD,2,1,
+2,Re: Question about Assignment 2,Of course. Take a look at the CSS Flexbox resources I posted in the course materials. That should point you in the right direction.,2025-09-18 11:30:00,READ,1,2,1
+3,Database Project - Team Formation,"Hey Sara, do you want to team up for the Database Design Project?",2025-09-16 14:20:00,READ,9,4,
+4,Re: Database Project - Team Formation,"Yeah, that sounds great! Let's connect after class tomorrow to discuss ideas.",2025-09-16 16:05:00,READ,4,9,3
+5,Office Hours Request,"Professor Chapman, would it be possible to schedule a brief meeting to go over my feedback on the Linked List assignment? Thanks, David.",2025-09-17 09:00:00,UNREAD,7,5,

@@ -1,0 +1,16 @@
+id,assignmentTitle,description,dueDate,maxPoints,courseId
+1,Linked List Implementation,Implement a singly linked list in Java and provide unit tests for all operations.,2025-10-10 18:24:20.893,81,2
+2,Responsive Portfolio Website,"Create a personal portfolio website using HTML, CSS, and JavaScript. The site must be responsive and include at least three sections.",2025-09-19 18:24:20.893,81,4
+3,Python Basics Quiz,"Complete the online quiz covering Python syntax, variables, and control flow.",2025-09-20 18:24:20.893,95,1
+4,Sorting Algorithms Analysis,"Compare the performance of bubble sort, merge sort, and quicksort on large datasets. Submit a report with your findings.",2025-10-14 18:24:20.893,25,1
+5,Software Requirements Document,"Write a requirements document for a proposed software project, including user stories and acceptance criteria.",2025-09-23 18:24:20.894,48,5
+6,Binary Search Tree Project,"Implement a binary search tree in Java and demonstrate insert, delete, and search operations.",2025-09-29 18:24:20.894,93,2
+7,Loops and Functions Lab,Write Python programs that use loops and functions to solve basic problems. Submit your code and screenshots of output.,2025-10-10 18:24:20.894,66,1
+8,Database Design Project,Design an ER diagram and implement the schema in SQL for a small business scenario.,2025-10-13 18:24:20.894,57,5
+9,Algorithm Complexity Homework,Solve problems related to time and space complexity. Show all work and explanations.,2025-10-07 18:24:20.894,96,2
+10,Agile Sprint Retrospective,"Write a reflection on your team's first agile sprint, including what went well and what could be improved.",2025-09-18 18:24:20.894,44,5
+11,SQL Query Practice,Write SQL queries to retrieve and manipulate data from a sample database. Submit your queries and results.,2025-09-24 18:24:20.894,14,3
+12,JavaScript DOM Manipulation,Create a web page that uses JavaScript to dynamically update the DOM based on user input.,2025-10-04 18:24:20.894,46,4
+13,Recursion Worksheet,Complete problems involving recursion in Java. Submit your code and explanations.,2025-10-14 18:24:20.894,26,2
+14,CSS Flexbox Layout,Build a web page layout using CSS Flexbox. The layout should be responsive and visually appealing.,2025-10-11 18:24:20.894,37,2
+15,Final Project Proposal,"Submit a proposal for your final project, including objectives, technologies, and a timeline.",2025-09-30 18:24:20.894,61,1
