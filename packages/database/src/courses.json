@@ -28,5 +28,35 @@
         "courseName": "Software Engineering",
         "syllabusContent": "Principles of software design, testing, and project management. Includes a team-based software project.",
         "instructorId": 17
+    },
+    {
+        "id": 6,
+        "courseName": "Operating Systems",
+        "syllabusContent": "Explores the core concepts of operating systems, including process management, memory management, and file systems.",
+        "instructorId": 11
+    },
+    {
+        "id": 7,
+        "courseName": "Introduction to Machine Learning",
+        "syllabusContent": "Covers fundamental machine learning algorithms such as regression, classification, and clustering.",
+        "instructorId": 17
+    },
+    {
+        "id": 8,
+        "courseName": "Computer Networks",
+        "syllabusContent": "An introduction to the principles and protocols of computer networking, including the TCP/IP stack.",
+        "instructorId": 1
+    },
+    {
+        "id": 9,
+        "courseName": "Cybersecurity Fundamentals",
+        "syllabusContent": "Learn about the basics of cybersecurity, including threat analysis, cryptography, and network security.",
+        "instructorId": 3
+    },
+    {
+        "id": 10,
+        "courseName": "Mobile App Development",
+        "syllabusContent": "Design and build mobile applications for Android or iOS platforms using modern development frameworks.",
+        "instructorId": 6
     }
 ]

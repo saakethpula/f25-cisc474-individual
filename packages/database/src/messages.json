@@ -46,4 +46,52 @@
         "senderId": 7,
         "recipientId": 5
     }
+,
+    {
+        "id": 6,
+        "subject": "Question about ML Assignment",
+        "body": "Hi Professor, for the spam classifier, are we allowed to use libraries like scikit-learn, or should we implement Naive Bayes from scratch? Thanks, Noah.",
+        "timestamp": "2025-11-01T14:30:00Z",
+        "status": "UNREAD",
+        "senderId": 32,
+        "recipientId": 17
+    },
+    {
+        "id": 7,
+        "subject": "Re: Question about ML Assignment",
+        "body": "Hi Noah, you are encouraged to use libraries like scikit-learn for this assignment. The focus is on understanding and applying the model correctly. Good question!",
+        "timestamp": "2025-11-01T16:00:00Z",
+        "status": "READ",
+        "senderId": 17,
+        "recipientId": 32,
+        "parentMessageId": 6
+    },
+    {
+        "id": 8,
+        "subject": "OS Project Partner",
+        "body": "Hey Liam, want to partner up for the Process Scheduler Simulation project?",
+        "timestamp": "2025-10-20T11:00:00Z",
+        "status": "READ",
+        "senderId": 40,
+        "recipientId": 31
+    },
+    {
+        "id": 9,
+        "subject": "Re: OS Project Partner",
+        "body": "Definitely! I was just about to ask you. Let's sync up this week.",
+        "timestamp": "2025-10-20T11:05:00Z",
+        "status": "READ",
+        "senderId": 31,
+        "recipientId": 40,
+        "parentMessageId": 8
+    },
+    {
+        "id": 10,
+        "subject": "Help with Packet Sniffer",
+        "body": "Professor, my packet sniffer isn't capturing any packets. I've installed Scapy and am running the script with sudo. Any ideas? - Benjamin",
+        "timestamp": "2025-11-22T19:00:00Z",
+        "status": "UNREAD",
+        "senderId": 50,
+        "recipientId": 1
+    }
 ]

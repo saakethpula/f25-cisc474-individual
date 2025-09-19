@@ -139,4 +139,15 @@
         "gradingDate": "2025-09-15T18:24:20.899734Z",
         "submissionId": 17
     }
+,
+    { "id": 21, "score": 88.5, "feedback": "Great simulation, the logic is sound and well-documented.", "gradingDate": "2025-11-06T12:00:00Z", "submissionId": 26 },
+    { "id": 22, "score": 135.0, "feedback": "Excellent accuracy on the classifier. Well done.", "gradingDate": "2025-11-12T16:30:00Z", "submissionId": 27 },
+    { "id": 23, "score": 72.0, "feedback": "The application works as expected. Good job on handling connections.", "gradingDate": "2025-11-01T11:00:00Z", "submissionId": 28 },
+    { "id": 24, "score": 110.0, "feedback": "You successfully identified all vulnerabilities. Great work.", "gradingDate": "2025-11-16T14:20:00Z", "submissionId": 29 },
+    { "id": 25, "score": 95.0, "feedback": "The app is functional and has a clean UI. Keep it up.", "gradingDate": "2025-11-21T10:00:00Z", "submissionId": 30 },
+    { "id": 26, "score": 55.0, "feedback": "Your report is thorough and well-researched.", "gradingDate": "2025-11-19T13:00:00Z", "submissionId": 31 },
+    { "id": 27, "score": 81.0, "feedback": "Correct implementation of the regression algorithm.", "gradingDate": "2025-10-29T17:45:00Z", "submissionId": 32 },
+    { "id": 28, "score": 68.0, "feedback": "You successfully captured and identified different packet types.", "gradingDate": "2025-11-26T18:00:00Z", "submissionId": 33 },
+    { "id": 29, "score": 45.0, "feedback": "Good job demonstrating both attack types.", "gradingDate": "2025-12-02T15:15:00Z", "submissionId": 34 },
+    { "id": 30, "score": 38.0, "feedback": "Creative design and a very clear wireframe.", "gradingDate": "2025-10-26T10:00:00Z", "submissionId": 35 }
 ]

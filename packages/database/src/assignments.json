@@ -119,4 +119,85 @@
         "maxPoints": 61,
         "courseId": 1
     }
+,
+    {
+        "id": 16,
+        "assignmentTitle": "Process Scheduler Simulation",
+        "description": "Simulate a CPU scheduling algorithm like Round Robin or Shortest Job First in C++ or Java.",
+        "dueDate": "2025-11-05T23:59:59Z",
+        "maxPoints": 100,
+        "courseId": 6
+    },
+    {
+        "id": 17,
+        "assignmentTitle": "Spam Email Classifier",
+        "description": "Build a Naive Bayes classifier to detect spam emails. Submit your Python code and a performance report.",
+        "dueDate": "2025-11-12T23:59:59Z",
+        "maxPoints": 150,
+        "courseId": 7
+    },
+    {
+        "id": 18,
+        "assignmentTitle": "TCP Socket Chat Application",
+        "description": "Create a simple command-line chat application using TCP sockets in Python.",
+        "dueDate": "2025-10-30T23:59:59Z",
+        "maxPoints": 80,
+        "courseId": 8
+    },
+    {
+        "id": 19,
+        "assignmentTitle": "SQL Injection Attack Lab",
+        "description": "Identify and exploit SQL injection vulnerabilities in a provided web application.",
+        "dueDate": "2025-11-15T23:59:59Z",
+        "maxPoints": 120,
+        "courseId": 9
+    },
+    {
+        "id": 20,
+        "assignmentTitle": "To-Do List Mobile App",
+        "description": "Develop a functional to-do list application for Android with persistent storage.",
+        "dueDate": "2025-11-20T23:59:59Z",
+        "maxPoints": 100,
+        "courseId": 10
+    },
+    {
+        "id": 21,
+        "assignmentTitle": "Memory Management Analysis",
+        "description": "Write a report comparing different memory allocation strategies.",
+        "dueDate": "2025-11-18T23:59:59Z",
+        "maxPoints": 60,
+        "courseId": 6
+    },
+    {
+        "id": 22,
+        "assignmentTitle": "Linear Regression Model",
+        "description": "Implement a linear regression model from scratch to predict housing prices.",
+        "dueDate": "2025-10-28T23:59:59Z",
+        "maxPoints": 90,
+        "courseId": 7
+    },
+    {
+        "id": 23,
+        "assignmentTitle": "Packet Sniffer Tool",
+        "description": "Use Scapy or a similar library to capture and analyze network packets.",
+        "dueDate": "2025-11-25T23:59:59Z",
+        "maxPoints": 75,
+        "courseId": 8
+    },
+    {
+        "id": 24,
+        "assignmentTitle": "Password Cracking Lab",
+        "description": "Use common tools to perform dictionary and brute-force attacks on a list of password hashes.",
+        "dueDate": "2025-12-01T23:59:59Z",
+        "maxPoints": 50,
+        "courseId": 9
+    },
+    {
+        "id": 25,
+        "assignmentTitle": "UI/UX Design for Mobile App",
+        "description": "Create a wireframe and design mockup for a new mobile application concept.",
+        "dueDate": "2025-10-25T23:59:59Z",
+        "maxPoints": 40,
+        "courseId": 10
+    }
 ]
