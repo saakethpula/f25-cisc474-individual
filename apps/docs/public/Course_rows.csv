@@ -4,3 +4,8 @@ id,courseName,syllabusContent,instructorId
 3,Database Systems,"Introduction to relational databases, SQL, normalization, and database design. Includes hands-on projects.",5
 4,Web Development,"Covers HTML, CSS, JavaScript, and modern frameworks. Students build and deploy a web application.",1
 5,Software Engineering,"Principles of software design, testing, and project management. Includes a team-based software project.",17
+6,Operating Systems,"Explores the core concepts of operating systems, including process management, memory management, and file systems.",11
+7,Introduction to Machine Learning,"Covers fundamental machine learning algorithms such as regression, classification, and clustering.",17
+8,Computer Networks,"An introduction to the principles and protocols of computer networking, including the TCP/IP stack.",1
+9,Cybersecurity Fundamentals,"Learn about the basics of cybersecurity, including threat analysis, cryptography, and network security.",3
+10,Mobile App Development,Design and build mobile applications for Android or iOS platforms using modern development frameworks.,6

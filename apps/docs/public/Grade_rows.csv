@@ -19,3 +19,13 @@ id,score,feedback,gradingDate,submissionId
 18,78.18,Your code is well-structured and your report is thorough. Keep up the good work!,2025-09-14 18:24:20.9,3
 19,30.97,"You answered most questions correctly, but missed a few key concepts. Review the assignment rubric.",2025-09-13 18:24:20.9,2
 20,53.4,Excellent! You exceeded expectations on this assignment.,2025-09-15 18:24:20.9,17
+21,88.5,"Great simulation, the logic is sound and well-documented.",2025-11-06 12:00:00,26
+22,135,Excellent accuracy on the classifier. Well done.,2025-11-12 16:30:00,27
+23,72,The application works as expected. Good job on handling connections.,2025-11-01 11:00:00,28
+24,110,You successfully identified all vulnerabilities. Great work.,2025-11-16 14:20:00,29
+25,95,The app is functional and has a clean UI. Keep it up.,2025-11-21 10:00:00,30
+26,55,Your report is thorough and well-researched.,2025-11-19 13:00:00,31
+27,81,Correct implementation of the regression algorithm.,2025-10-29 17:45:00,32
+28,68,You successfully captured and identified different packet types.,2025-11-26 18:00:00,33
+29,45,Good job demonstrating both attack types.,2025-12-02 15:15:00,34
+30,38,Creative design and a very clear wireframe.,2025-10-26 10:00:00,35

@@ -14,3 +14,13 @@ id,assignmentTitle,description,dueDate,maxPoints,courseId
 13,Recursion Worksheet,Complete problems involving recursion in Java. Submit your code and explanations.,2025-10-14 18:24:20.894,26,2
 14,CSS Flexbox Layout,Build a web page layout using CSS Flexbox. The layout should be responsive and visually appealing.,2025-10-11 18:24:20.894,37,2
 15,Final Project Proposal,"Submit a proposal for your final project, including objectives, technologies, and a timeline.",2025-09-30 18:24:20.894,61,1
+16,Process Scheduler Simulation,Simulate a CPU scheduling algorithm like Round Robin or Shortest Job First in C++ or Java.,2025-11-05 23:59:59,100,6
+17,Spam Email Classifier,Build a Naive Bayes classifier to detect spam emails. Submit your Python code and a performance report.,2025-11-12 23:59:59,150,7
+18,TCP Socket Chat Application,Create a simple command-line chat application using TCP sockets in Python.,2025-10-30 23:59:59,80,8
+19,SQL Injection Attack Lab,Identify and exploit SQL injection vulnerabilities in a provided web application.,2025-11-15 23:59:59,120,9
+20,To-Do List Mobile App,Develop a functional to-do list application for Android with persistent storage.,2025-11-20 23:59:59,100,10
+21,Memory Management Analysis,Write a report comparing different memory allocation strategies.,2025-11-18 23:59:59,60,6
+22,Linear Regression Model,Implement a linear regression model from scratch to predict housing prices.,2025-10-28 23:59:59,90,7
+23,Packet Sniffer Tool,Use Scapy or a similar library to capture and analyze network packets.,2025-11-25 23:59:59,75,8
+24,Password Cracking Lab,Use common tools to perform dictionary and brute-force attacks on a list of password hashes.,2025-12-01 23:59:59,50,9
+25,UI/UX Design for Mobile App,Create a wireframe and design mockup for a new mobile application concept.,2025-10-25 23:59:59,40,10

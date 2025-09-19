@@ -4,3 +4,8 @@ id,subject,body,timestamp,status,senderId,recipientId,parentMessageId
 3,Database Project - Team Formation,"Hey Sara, do you want to team up for the Database Design Project?",2025-09-16 14:20:00,READ,9,4,
 4,Re: Database Project - Team Formation,"Yeah, that sounds great! Let's connect after class tomorrow to discuss ideas.",2025-09-16 16:05:00,READ,4,9,3
 5,Office Hours Request,"Professor Chapman, would it be possible to schedule a brief meeting to go over my feedback on the Linked List assignment? Thanks, David.",2025-09-17 09:00:00,UNREAD,7,5,
+6,Question about ML Assignment,"Hi Professor, for the spam classifier, are we allowed to use libraries like scikit-learn, or should we implement Naive Bayes from scratch? Thanks, Noah.",2025-11-01 14:30:00,UNREAD,32,17,
+7,Re: Question about ML Assignment,"Hi Noah, you are encouraged to use libraries like scikit-learn for this assignment. The focus is on understanding and applying the model correctly. Good question!",2025-11-01 16:00:00,READ,17,32,6
+8,OS Project Partner,"Hey Liam, want to partner up for the Process Scheduler Simulation project?",2025-10-20 11:00:00,READ,40,31,
+9,Re: OS Project Partner,Definitely! I was just about to ask you. Let's sync up this week.,2025-10-20 11:05:00,READ,31,40,8
+10,Help with Packet Sniffer,"Professor, my packet sniffer isn't capturing any packets. I've installed Scapy and am running the script with sudo. Any ideas? - Benjamin",2025-11-22 19:00:00,UNREAD,50,1,
