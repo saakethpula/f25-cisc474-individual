@@ -3,10 +3,16 @@ import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
-  findAll(){
+  findAll() {
     return this.prisma.user.findMany();
+  }
+
+  findOne(id: number) {
+    return this.prisma.user.findUnique({
+      where: { id }
+    });
   }
 }
 

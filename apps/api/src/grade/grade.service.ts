@@ -8,5 +8,10 @@ export class GradeService {
     findAll() {
         return this.prisma.grade.findMany();
     }
+    findOne(id: number) {
+        return this.prisma.grade.findUnique({
+            where: { id }
+        });
+    }
 }
 

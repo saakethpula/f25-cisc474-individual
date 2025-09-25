@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AssignmentService } from './assignment.service';
 @Controller('assignment')
 export class AssignmentController {
@@ -7,5 +7,10 @@ export class AssignmentController {
     @Get()
     findAll() {
         return this.assignmentService.findAll();
+    }
+
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.assignmentService.findOne(+id);
     }
 }

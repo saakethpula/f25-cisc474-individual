@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { EnrollmentService } from './enrollment.service';
 @Controller('enrollment')
 export class EnrollmentController {
@@ -7,5 +7,10 @@ export class EnrollmentController {
     @Get()
     findAll() {
         return this.enrollmentService.findAll();
+    }
+
+    @Get(':studentId')
+    findOne(@Param('studentId') studentId: string) {
+        return this.enrollmentService.findOne(+studentId);
     }
 }

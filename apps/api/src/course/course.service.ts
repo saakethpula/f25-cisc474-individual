@@ -8,5 +8,11 @@ export class CourseService {
     findAll() {
         return this.prisma.course.findMany();
     }
+    findOne(id: number) {
+        return this.prisma.course.findUnique({
+            where: { id }
+        });
+    }
+
 }
 

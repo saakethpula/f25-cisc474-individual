@@ -8,5 +8,11 @@ export class MessageService {
     findAll() {
         return this.prisma.message.findMany();
     }
+
+    findOne(id: number) {
+        return this.prisma.message.findUnique({
+            where: { id }
+        });
+    }
 }
 

@@ -8,5 +8,10 @@ export class AssignmentService {
     findAll() {
         return this.prisma.assignment.findMany();
     }
+    findOne(id: number) {
+        return this.prisma.assignment.findUnique({
+            where: { id }
+        });
+    }
 }
 

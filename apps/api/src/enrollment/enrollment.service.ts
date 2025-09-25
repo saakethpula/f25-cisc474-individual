@@ -8,5 +8,10 @@ export class EnrollmentService {
     findAll() {
         return this.prisma.enrollment.findMany();
     }
+    findOne(studentId: number) {
+        return this.prisma.enrollment.findMany({
+            where: { studentId }
+        });
+    }
 }
 

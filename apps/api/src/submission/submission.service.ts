@@ -8,5 +8,10 @@ export class SubmissionService {
   findAll() {
     return this.prisma.submission.findMany();
   }
+  findOne(id: number) {
+    return this.prisma.submission.findUnique({
+      where: { id }
+    });
+  }
 }
 
