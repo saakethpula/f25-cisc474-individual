@@ -1,4 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
-export class AssignmentService {}
+export class AssignmentService {
+    constructor(private prisma: PrismaService) { }
+
+    findAll() {
+        return this.prisma.assignment.findMany();
+    }
+}
+
