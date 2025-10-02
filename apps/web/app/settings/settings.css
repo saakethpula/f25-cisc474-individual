@@ -118,3 +118,15 @@
     color: white;
     font-size: 1.5rem;
 }
+.assignmentLinkText {
+    text-align: center;
+    color: #000000ff;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+.assignmentLink {
+    text-align: center;
+    color: blue;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
