@@ -32,6 +32,7 @@
 .mainContent {
     flex: 1;
     width: 100%;
+    color: #222
 }
 
 .mainHeader {
@@ -117,4 +118,19 @@
 .toDoListItems {
     color: white;
     font-size: 1.5rem;
+}
+.messageSubject {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.messageBody {
+    font-size: 1rem;
+}
+
+.messagesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: lightgray;
 }

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import "./courses.css";
-const CoursesPage = () => {
+
+type Course = {
+    id: number;
+    courseName: string;
+};
+
+async function getCourses(): Promise<Course[]> {
+    const res = await fetch("https://f25-cisc474-individual-234i.onrender.com/course", { cache: "no-store" });
+    if (!res.ok) return [];
+    return res.json();
+}
+
+const CoursesPage = async () => {
+    const courses = await getCourses();
+
     return (
         <main className="coursesContainer">
             <nav className="leftNav">
@@ -20,9 +34,19 @@ const CoursesPage = () => {
             <div className="mainContent">
                 <h1 className="mainHeader">Courses</h1>
                 <p className="mainDescription">Welcome to the Courses page.</p>
-                <div className="coursesGrid">
-                    <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
-                </div>
+                <Suspense fallback={<div>Loading courses...</div>}>
+                    <div className="coursesGrid">
+                        {courses.length === 0 ? (
+                            <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
+                        ) : (
+                            courses.map((c) => (
+                                <Link key={c.id} className="courseSquare" href={`/courses/${c.id}`}>
+                                    {c.courseName}
+                                </Link>
+                            ))
+                        )}
+                    </div>
+                </Suspense>
             </div>
         </main>
     );
