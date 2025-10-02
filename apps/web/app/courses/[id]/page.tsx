@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import "../courses.css";
 
@@ -27,11 +27,42 @@ async function getAssignments(): Promise<Assignment[]> {
     return res.json();
 }
 
+// Async server component that fetches and renders assignments for a course
+async function CourseAssignments({ courseId }: { courseId: string }) {
+    try {
+        const assignments = await getAssignments();
+        const courseAssignments = assignments.filter((a) => String(a.courseId) === courseId);
+
+        if (courseAssignments.length === 0) {
+            return (
+                <div className="coursesGrid">
+                    <div className="courseSquare">
+                        <p>No assignments yet</p>
+                    </div>
+                </div>
+            );
+        }
+
+        return (
+            <div className="coursesGrid">
+                {courseAssignments.map((a) => (
+                    <div key={a.id} className="courseSquare">
+                        <Link href={`/courses/${courseId}/assignment-${a.id}`} className="assignmentLink">
+                            {a.assignmentTitle}
+                        </Link>
+                    </div>
+                ))}
+            </div>
+        );
+    } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        return <div className="coursesGrid"><p className="error">Error loading assignments: {message}</p></div>;
+    }
+}
+
 export default async function CoursePage(props: any) {
     const { params } = props;
-    const [course, assignments] = await Promise.all([getCourse(params.id), getAssignments()]);
-
-    const courseAssignments = assignments.filter((a) => String(a.courseId) === params.id);
+    const course = await getCourse(params.id);
 
     return (
         <main className="coursesContainer">
@@ -52,21 +83,10 @@ export default async function CoursePage(props: any) {
                 <h1 className="mainHeader">{course?.courseName ?? "Course"}</h1>
                 <p className="mainDescription">Welcome to the {course?.courseName ?? "course"} page.</p>
 
-                <div className="coursesGrid">
-                    {courseAssignments.length === 0 ? (
-                        <div className="courseSquare">
-                            <p>No assignments yet</p>
-                        </div>
-                    ) : (
-                        courseAssignments.map((a) => (
-                            <div key={a.id} className="courseSquare">
-                                <Link href={`/courses/${params.id}/assignment-${a.id}`} className="assignmentLink">
-                                    {a.assignmentTitle}
-                                </Link>
-                            </div>
-                        ))
-                    )}
-                </div>
+                <Suspense fallback={<div>Loading assignments...</div>}>
+                    {/* CourseAssignments is an async server component; Suspense will show the fallback during client navigation */}
+                    <CourseAssignments courseId={params.id} />
+                </Suspense>
             </div>
         </main>
     );

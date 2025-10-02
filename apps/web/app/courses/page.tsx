@@ -13,9 +13,34 @@ async function getCourses(): Promise<Course[]> {
     return res.json();
 }
 
-const CoursesPage = async () => {
-    const courses = await getCourses();
+async function CoursesList() {
+    try {
+        const courses = await getCourses();
 
+        if (!courses || courses.length === 0) {
+            return (
+                <div className="coursesGrid">
+                    <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
+                </div>
+            );
+        }
+
+        return (
+            <div className="coursesGrid">
+                {courses.map((c) => (
+                    <Link key={c.id} className="courseSquare" href={`/courses/${c.id}`}>
+                        {c.courseName}
+                    </Link>
+                ))}
+            </div>
+        );
+    } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        return <div className="coursesGrid"><p className="error">Error loading courses: {message}</p></div>;
+    }
+}
+
+const CoursesPage = () => {
     return (
         <main className="coursesContainer">
             <nav className="leftNav">
@@ -35,17 +60,7 @@ const CoursesPage = async () => {
                 <h1 className="mainHeader">Courses</h1>
                 <p className="mainDescription">Welcome to the Courses page.</p>
                 <Suspense fallback={<div>Loading courses...</div>}>
-                    <div className="coursesGrid">
-                        {courses.length === 0 ? (
-                            <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
-                        ) : (
-                            courses.map((c) => (
-                                <Link key={c.id} className="courseSquare" href={`/courses/${c.id}`}>
-                                    {c.courseName}
-                                </Link>
-                            ))
-                        )}
-                    </div>
+                    <CoursesList />
                 </Suspense>
             </div>
         </main>

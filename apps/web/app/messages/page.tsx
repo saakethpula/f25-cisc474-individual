@@ -23,10 +23,31 @@ async function getMessages(): Promise<Message[]> {
   return res.json();
 }
 
+// Async server component that fetches and renders the messages list.
+async function MessagesList() {
+  try {
+    const messages = await getMessages();
 
-export default async function MessagesPage() {
-  const messages = await getMessages();
+    if (!messages || messages.length === 0) {
+      return <p>No messages</p>;
+    }
 
+    return (
+      <ul className="messagesList">
+        {messages.map((m) => (
+          <li key={m.id} className="messageItem">
+            <div className="messageSubject">{m.subject}</div>
+            <div className="messageBody">{m.body}</div>
+          </li>
+        ))}
+      </ul>
+    );
+  } catch (err: any) {
+    return <p className="error">Error loading messages: {err?.message ?? String(err)}</p>;
+  }
+}
+
+export default function MessagesPage() {
   return (
     <main className="messagesContainer">
       <nav className="leftNav">
@@ -43,20 +64,9 @@ export default async function MessagesPage() {
 
         <section>
           <h2>Inbox</h2>
-          {messages.length === 0 ? (
-            <p>No messages</p>
-          ) : (
-            <Suspense fallback={<div>Loading messages...</div>}>
-              <ul className="messagesList">
-                {messages.map((m) => (
-                  <li key={m.id} className="messageItem">
-                    <div className="messageSubject">{m.subject}</div>
-                    <div className="messageBody">{m.body}</div>
-                  </li>
-                ))}
-              </ul>
-            </Suspense>
-          )}
+          <Suspense fallback={<div>Loading messages...</div>}>
+            <MessagesList />
+          </Suspense>
         </section>
       </div>
     </main>
