@@ -27,7 +27,8 @@ async function getAssignments(): Promise<Assignment[]> {
     return res.json();
 }
 
-export default async function CoursePage({ params }: { params: { id: string } }) {
+export default async function CoursePage(props: any) {
+    const { params } = props;
     const [course, assignments] = await Promise.all([getCourse(params.id), getAssignments()]);
 
     const courseAssignments = assignments.filter((a) => String(a.courseId) === params.id);
