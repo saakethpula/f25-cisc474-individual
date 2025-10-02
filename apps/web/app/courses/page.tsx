@@ -50,7 +50,7 @@ const CoursesPage = () => {
             <div className="mainContent">
                 <h1 className="mainHeader">Courses</h1>
                 <p className="mainDescription">Welcome to the Courses page.</p>
-                <Suspense fallback={<div>Loading courses...</div>}>
+                <Suspense fallback={<div className="fallback">Loading courses...</div>}>
                     <CoursesList />
                 </Suspense>
             </div>
