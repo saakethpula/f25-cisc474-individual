@@ -16,15 +16,6 @@ async function getCourses(): Promise<Course[]> {
 async function CoursesList() {
     try {
         const courses = await getCourses();
-
-        if (!courses || courses.length === 0) {
-            return (
-                <div className="coursesGrid">
-                    <Link className="courseSquare" href="/courses/example-class"> Example Class</Link>
-                </div>
-            );
-        }
-
         return (
             <div className="coursesGrid">
                 {courses.map((c) => (
