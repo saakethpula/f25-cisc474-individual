@@ -1,4 +1,6 @@
-import React, { Suspense } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import "./messages.css";
 
@@ -13,38 +15,53 @@ type Message = {
   parentMessageId?: string;
 };
 
-async function getMessages(): Promise<Message[]> {
-  const res = await fetch("https://f25-cisc474-individual-234i.onrender.com/message", {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch messages: ${res.status} ${res.statusText}`);
-  }
-  return res.json();
-}
 
-// Async server component that fetches and renders the messages list.
-async function MessagesList() {
-  try {
-    const messages = await getMessages();
+function MessagesList() {
+  const [messages, setMessages] = useState<Message[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    if (!messages || messages.length === 0) {
-      return <p>No messages</p>;
-    }
+  useEffect(() => {
+    let mounted = true;
+    const controller = new AbortController();
 
-    return (
-      <ul className="messagesList">
-        {messages.map((m) => (
-          <li key={m.id} className="messageItem">
-            <div className="messageSubject">{m.subject}</div>
-            <div className="messageBody">{m.body}</div>
-          </li>
-        ))}
-      </ul>
-    );
-  } catch (err: any) {
-    return <p className="error">Error loading messages: {err?.message ?? String(err)}</p>;
-  }
+    (async () => {
+      try {
+        const res = await fetch("https://f25-cisc474-individual-234i.onrender.com/message", {
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`Failed to fetch messages: ${res.status} ${res.statusText}`);
+        const data: Message[] = await res.json();
+        if (mounted) setMessages(data);
+      } catch (err: unknown) {
+        const e = err as { name?: string; message?: string };
+        if (e.name === "AbortError") return;
+        if (mounted) setError(e.message ?? String(err));
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+      controller.abort();
+    };
+  }, []);
+
+  if (loading) return <div>Loading messages...</div>;
+  if (error) return <p className="error">Error loading messages: {error}</p>;
+  if (!messages || messages.length === 0) return <p>No messages</p>;
+
+  return (
+    <ul className="messagesList">
+      {messages.map((m) => (
+        <li key={m.id} className="messageItem">
+          <div className="messageSubject">{m.subject}</div>
+          <div className="messageBody">{m.body}</div>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default function MessagesPage() {
@@ -64,9 +81,7 @@ export default function MessagesPage() {
 
         <section>
           <h2>Inbox</h2>
-          <Suspense fallback={<div>Loading messages...</div>}>
             <MessagesList />
-          </Suspense>
         </section>
       </div>
     </main>
