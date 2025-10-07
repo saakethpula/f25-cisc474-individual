@@ -17,14 +17,14 @@ function RouteComponent() {
         <p className="mainDescription">Manage your application settings here.</p>
         <div className="assignmentLinkText">
           Messages Page with Access to the Backend:
-          <a className="assignmentLink" href="https://f25-cisc474-individual-web-chi.vercel.app/messages">
-            https://f25-cisc474-individual-web-chi.vercel.app/messages
+          <a className="assignmentLink" href="https://474-individual-web-app.saakethp.workers.dev/messages">
+            https://474-individual-web-app.saakethp.workers.dev/messages
           </a>
         </div>
         <div className="assignmentLinkText">
           Courses Page with Access to the Backend:
-          <a className="assignmentLink" href="https://f25-cisc474-individual-web-chi.vercel.app/courses">
-            https://f25-cisc474-individual-web-chi.vercel.app/courses
+          <a className="assignmentLink" href="https://474-individual-web-app.saakethp.workers.dev/courses">
+            https://474-individual-web-app.saakethp.workers.dev/courses
           </a>
         </div>
         <div className="assignmentLinkText">Clicking on a course will show you the assignments for that class from the backend</div>
