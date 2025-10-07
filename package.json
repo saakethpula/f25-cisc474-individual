@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@prisma/client": "latest",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "nvm": "^0.0.4"
   },
   "packageManager": "npm@10.9.0",
