@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import '../../styles.css';
 
 type Assignment = { id: number; assignmentTitle: string; courseId: number };
-type Course = { id: number; courseName: string };
+type Course = { id: number; courseName: string, syllabusContent: string | null };
 
 export const Route = createFileRoute('/courses/$id')({
   component: RouteComponent,
@@ -101,7 +101,7 @@ function RouteComponent(props: any) {
 
       <div className="mainContent">
         <h1 className="mainHeader">{loading ? 'Loading...' : course?.courseName ?? 'Course'}</h1>
-        <p className="mainDescription">{loading ? 'Loading course...' : `Welcome to the ${course?.courseName ?? 'course'} page.`}</p>
+        <p className="mainDescription">{loading ? 'Loading course...' : `Syllabus: ${course?.syllabusContent ?? ''}`}</p>
 
         {loading && <div className="fallback">Loading assignments...</div>}
         {error && <p className="error">Error loading: {error}</p>}
