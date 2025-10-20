@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 
-type Course = { id: number; courseName: string };
+type Course = { id: number; courseName: string; syllabusContent?: string | null; instructorId?: number };
 
 export const Route = createFileRoute('/courses/')({
   component: RouteComponent,
@@ -11,6 +11,13 @@ function RouteComponent() {
   const [courses, setCourses] = useState<Array<Course> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useState<'view' | 'update' | 'delete'>('view');
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [showForm, setShowForm] = useState(false);
+  const [formName, setFormName] = useState('');
+  const [formSyllabus, setFormSyllabus] = useState('');
+  const [formErrors, setFormErrors] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -35,6 +42,49 @@ function RouteComponent() {
     };
   }, []);
 
+  async function reloadCourses() {
+    setLoading(true);
+    try {
+      const res = await fetch('https://f25-cisc474-individual-234i.onrender.com/course');
+      if (!res.ok) throw new Error(`Failed to fetch courses: ${res.status}`);
+      const data: Array<Course> = await res.json();
+      setCourses(data);
+    } catch (err: unknown) {
+      const e = err as { message?: string };
+      setError(e.message ?? String(err));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleCreateCourse(payload: { courseName: string; syllabusContent?: string | null; instructorId: number }) {
+    const res = await fetch('https://f25-cisc474-individual-234i.onrender.com/course', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`Create failed: ${res.status}`);
+    await reloadCourses();
+  }
+
+  async function handleUpdateCourse(id: number, payload: { courseName?: string; syllabusContent?: string | null }) {
+    const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/course/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`Update failed: ${res.status}`);
+    await reloadCourses();
+  }
+
+  async function handleDeleteCourse(id: number) {
+    const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/course/${id}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) throw new Error(`Delete failed: ${res.status}`);
+    await reloadCourses();
+  }
+
   return (
     <main className="coursesContainer">
       <nav className="leftNav">
@@ -49,15 +99,96 @@ function RouteComponent() {
         <h1 className="mainHeader">Courses</h1>
         <p className="mainDescription">Welcome to the Courses page.</p>
 
+        {/* Floating action buttons rendered at bottom-right */}
+
         {loading && <div className="fallback">Loading courses...</div>}
         {error && <div className="coursesGrid"><p className="error">Error loading courses: {error}</p></div>}
         {courses && (
           <div className="coursesGrid">
             {courses.map((c) => (
-              <a key={c.id} className="courseSquare" href={`/courses/${c.id}`}>
+              <div key={c.id} className="courseSquare" style={{ cursor: 'pointer' }} onClick={() => {
+                if (mode === 'delete') {
+                  setSelectedCourse(c);
+                  // show delete confirmation
+                  if (confirm(`Delete course "${c.courseName}"? This cannot be undone.`)) {
+                    handleDeleteCourse(c.id);
+                  }
+                } else if (mode === 'update') {
+                  setSelectedCourse(c);
+                  setFormName(c.courseName);
+                  setFormSyllabus(c.syllabusContent ?? '');
+                  setShowForm(true);
+                } else {
+                  // view mode: navigate
+                  window.location.href = `/courses/${c.id}`;
+                }
+              }}>
                 {c.courseName}
-              </a>
+              </div>
             ))}
+          </div>
+        )}
+
+        {showForm && (
+          <div>
+            <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1100 }} onClick={() => { if (!saving) { setShowForm(false); setSelectedCourse(null); } }} />
+            <div style={{ position: 'fixed', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', width: 'min(720px, 92%)', background: 'white', borderRadius: 8, padding: 20, zIndex: 1200, boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }} role="dialog" aria-modal="true">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <h2 style={{ margin: 0 }}>{selectedCourse ? 'Update Course' : 'Create Course'}</h2>
+                <button aria-label="Close" onClick={() => { if (!saving) { setShowForm(false); setSelectedCourse(null); } }} style={{ border: 'none', background: 'transparent', fontSize: 20 }}>✕</button>
+              </div>
+
+              {formErrors && <div style={{ marginBottom: 12, color: 'crimson' }}>{formErrors}</div>}
+
+              <div style={{ display: 'grid', gap: 10 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <label style={{ fontWeight: 600 }}>Course Name</label>
+                  <input value={formName} onChange={(e) => setFormName(e.target.value)} style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid #ddd' }} />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <label style={{ fontWeight: 600 }}>Syllabus (optional)</label>
+                  <textarea value={formSyllabus} onChange={(e) => setFormSyllabus(e.target.value)} style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid #ddd', minHeight: 120 }} />
+                </div>
+
+                <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 6 }}>
+                  <button onClick={() => { setShowForm(false); setSelectedCourse(null); }} disabled={saving} style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #ccc', background: '#fff' }}>Cancel</button>
+                  <button onClick={async () => {
+                    setFormErrors(null);
+                    if (!formName.trim()) { setFormErrors('Course name is required'); return; }
+                    setSaving(true);
+                    try {
+                      if (selectedCourse) {
+                        await handleUpdateCourse(selectedCourse.id, { courseName: formName.trim(), syllabusContent: formSyllabus.trim() || null });
+                      } else {
+                        await handleCreateCourse({ courseName: formName.trim(), syllabusContent: formSyllabus.trim() || null, instructorId: 1 });
+                      }
+                      setShowForm(false);
+                      setSelectedCourse(null);
+                    } catch (err: unknown) {
+                      const e = err as { message?: string };
+                      setFormErrors(e.message ?? 'Failed to save course');
+                    } finally {
+                      setSaving(false);
+                    }
+                  }} disabled={saving} style={{ padding: '8px 14px', borderRadius: 6, border: 'none', background: '#0b74de', color: 'white' }}>{saving ? (selectedCourse ? 'Saving...' : 'Creating...') : 'Save'}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Floating action buttons: Create, Update, Delete */}
+        <div style={{ position: 'fixed', right: 20, bottom: 20, display: 'flex', flexDirection: 'column', gap: 8, zIndex: 1000 }}>
+          <button aria-label="Create course" title="Create" onClick={() => { setSelectedCourse(null); setFormName(''); setFormSyllabus(''); setShowForm(true); setMode('view'); }} style={{ padding: '10px 14px', borderRadius: 8, background: '#0b74de', color: 'white', border: 'none' }}>Create</button>
+          <button aria-label="Update course" title="Update" onClick={() => { setMode((m) => m === 'update' ? 'view' : 'update'); }} style={{ padding: '10px 14px', borderRadius: 8, background: mode === 'update' ? '#c97d2c' : '#f0ad4e', color: 'white', border: 'none' }}>{mode === 'update' ? 'Updating...' : 'Update'}</button>
+          <button aria-label="Delete course" title="Delete" onClick={() => { setMode((m) => m === 'delete' ? 'view' : 'delete'); }} style={{ padding: '10px 14px', borderRadius: 8, background: mode === 'delete' ? '#a94442' : '#d9534f', color: 'white', border: 'none' }}>{mode === 'delete' ? 'Deleting...' : 'Delete'}</button>
+        </div>
+
+        {/* Mode hint */}
+        {mode !== 'view' && (
+          <div style={{ position: 'fixed', right: 20, bottom: 180, background: 'rgba(0,0,0,0.7)', color: 'white', padding: '8px 12px', borderRadius: 8, zIndex: 1000 }}>
+            <span style={{ marginRight: 12 }}>{mode === 'update' ? 'Update mode: click a course to edit' : 'Delete mode: click a course to delete'}</span>
+            <button onClick={() => setMode('view')} style={{ background: 'transparent', color: 'white', border: 'none', cursor: 'pointer' }}>✕</button>
           </div>
         )}
       </div>
