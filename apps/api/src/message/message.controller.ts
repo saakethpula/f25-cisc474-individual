@@ -19,6 +19,9 @@ export class MessageController {
 
     @Patch(':id')
     updateStatus(@Param('id') id: string, @Body() dto: UpdateMessageDto) {
-        return this.messageService.updateStatus(+id, dto.status);
+        if (!dto || (dto.status !== 'READ' && dto.status !== 'UNREAD')) {
+            throw new Error('Invalid status');
+        }
+        return this.messageService.updateStatus(+id, dto.status as 'READ' | 'UNREAD');
     }
 }
