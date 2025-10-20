@@ -109,6 +109,35 @@ function RouteComponent() {
                         </button>
                       </div>
                     )}
+
+                    {activeTab === 'READ' && (
+                      <div>
+                        <button
+                          onClick={async () => {
+                            try {
+                              // Optimistic UI update
+                              setMessages((prev) => prev?.map((msg) => (msg.id === m.id ? { ...msg, status: 'UNREAD' } : msg)) ?? null);
+                              const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/message/${m.id}`, {
+                                method: 'PATCH',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ status: 'UNREAD' }),
+                              });
+                              if (!res.ok) {
+                                throw new Error(`Failed to update message: ${res.status}`);
+                              }
+                            } catch (err) {
+                              // Revert optimistic update on error
+                              setMessages((prev) => prev?.map((msg) => (msg.id === m.id ? { ...msg, status: 'READ' } : msg)) ?? null);
+                              console.error(err);
+                              alert('Failed to mark message as unread');
+                            }
+                          }}
+                          style={{ padding: '6px 12px', borderRadius: 6 }}
+                        >
+                          Mark as unread
+                        </button>
+                      </div>
+                    )}
                   </li>
                 ))}
             </ul>
