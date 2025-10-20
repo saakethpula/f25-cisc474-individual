@@ -1,5 +1,9 @@
 {
   "extends": "@repo/typescript-config/base.json",
   "include": ["src"],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

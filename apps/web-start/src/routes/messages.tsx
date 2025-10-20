@@ -18,6 +18,7 @@ function RouteComponent() {
   const [messages, setMessages] = useState<Array<Message> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'UNREAD' | 'READ'>('UNREAD');
 
   useEffect(() => {
     const controller = new AbortController();
@@ -54,16 +55,62 @@ function RouteComponent() {
 
         <section>
           <h2>Inbox</h2>
+          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+            <button
+              onClick={() => setActiveTab('UNREAD')}
+              aria-pressed={activeTab === 'UNREAD'}
+              style={{ padding: '6px 12px', borderRadius: 8, background: activeTab === 'UNREAD' ? '#383838' : '#efefef', color: activeTab === 'UNREAD' ? '#fff' : '#000' }}
+            >
+              Unread {messages ? `(${messages.filter((m) => m.status === 'UNREAD').length})` : ''}
+            </button>
+            <button
+              onClick={() => setActiveTab('READ')}
+              aria-pressed={activeTab === 'READ'}
+              style={{ padding: '6px 12px', borderRadius: 8, background: activeTab === 'READ' ? '#383838' : '#efefef', color: activeTab === 'READ' ? '#fff' : '#000' }}
+            >
+              Read {messages ? `(${messages.filter((m) => m.status === 'READ').length})` : ''}
+            </button>
+          </div>
           {loading && <div>Loading messages...</div>}
           {error && <p className="error">Error loading messages: {error}</p>}
           {messages && (
             <ul className="messagesList">
-              {messages.map((m) => (
-                <li key={m.id} className="messageItem">
-                  <div className="messageSubject">{m.subject}</div>
-                  <div className="messageBody">{m.body}</div>
-                </li>
-              ))}
+              {messages
+                .filter((m) => (activeTab === 'UNREAD' ? m.status === 'UNREAD' : m.status === 'READ'))
+                .map((m) => (
+                  <li key={m.id} className="messageItem" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <div className="messageSubject">{m.subject}</div>
+                    <div className="messageBody">{m.body}</div>
+                    {activeTab === 'UNREAD' && (
+                      <div>
+                        <button
+                          onClick={async () => {
+                            try {
+                              // Optimistic UI update
+                              setMessages((prev) => prev?.map((msg) => (msg.id === m.id ? { ...msg, status: 'READ' } : msg)) ?? null);
+                              const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/message/${m.id}`, {
+                                method: 'PATCH',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ status: 'READ' }),
+                              });
+                              if (!res.ok) {
+                                throw new Error(`Failed to update message: ${res.status}`);
+                              }
+                            } catch (err) {
+                              // Revert optimistic update on error
+                              setMessages((prev) => prev?.map((msg) => (msg.id === m.id ? { ...msg, status: 'UNREAD' } : msg)) ?? null);
+                              console.error(err);
+                              alert('Failed to mark message as read');
+                            }
+                          }}
+                          style={{ padding: '6px 12px', borderRadius: 6 }}
+                        >
+                          Mark as read
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                ))}
             </ul>
           )}
         </section>

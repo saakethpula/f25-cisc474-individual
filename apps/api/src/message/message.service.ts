@@ -14,5 +14,12 @@ export class MessageService {
             where: { id }
         });
     }
+
+    async updateStatus(id: number, status: 'READ' | 'UNREAD') {
+        return this.prisma.message.update({
+            where: { id },
+            data: { status },
+        });
+    }
 }
 
