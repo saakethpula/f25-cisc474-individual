@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { useAuth0 } from '@auth0/auth0-react';
 import courses from '../data/courses.json';
 import todoList from '../data/todoList.json';
 import '../styles.css';
@@ -7,8 +8,13 @@ export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
 });
 
+
 function RouteComponent() {
+
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   return (
+    isAuthenticated &&
     <main className="dashboardContainer">
       <nav className="leftNav">
         <a href="/" className="loginBtn" aria-label="Login">:)</a>
@@ -20,7 +26,7 @@ function RouteComponent() {
 
       <div className="mainContent">
         <h1 className="mainHeader">Dashboard</h1>
-        <p className="mainDescription">Welcome to the dashboard! Here you'll find helpful information at a glance.</p>
+        <p className="mainDescription">Welcome to the dashboard {JSON.stringify(user, null, 2)}! Here you'll find helpful information at a glance.</p>
 
         <div className="coursesGrid">
           {courses.map((course: { name: string; grade: string }, idx: number) => (

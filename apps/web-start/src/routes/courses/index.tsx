@@ -22,7 +22,8 @@ function RouteComponent() {
 
   const { loginWithRedirect } = useAuth0();
 
-  const coursesQuery = useApiQuery<Array<Course>>(['courses'], '/courses');
+  // Use auth-aware query to fetch courses. The backend path here is '/course'
+  const coursesQuery = useApiQuery<Array<Course>>(['courses'], '/course');
 
   useEffect(() => {
     setError(coursesQuery.error ? String((coursesQuery.error as any)?.message ?? coursesQuery.error) : null);
@@ -33,15 +34,15 @@ function RouteComponent() {
 
   // Use mutations that invalidate the ['courses'] key on success
   const createMutation = useApiMutation<{ courseName: string; syllabusContent?: string | null; instructorId: number }>(
-    { path: '/courses', method: 'POST', invalidateKeys: [['courses']] },
+    { path: '/course', method: 'POST', invalidateKeys: [['courses']] },
   );
 
   const updateMutation = useApiMutation<{ id: number; courseName?: string; syllabusContent?: string | null }, unknown>(
-    { endpoint: (vars) => ({ path: `/courses/${(vars as any).id}`, method: 'PATCH' }), invalidateKeys: [['courses']] },
+    { endpoint: (vars) => ({ path: `/course/${(vars as any).id}`, method: 'PATCH' }), invalidateKeys: [['courses']] },
   );
 
   const deleteMutation = useApiMutation<{ id: number }, unknown>(
-    { endpoint: (vars) => ({ path: `/courses/${(vars as any).id}`, method: 'DELETE' }), invalidateKeys: [['courses']] },
+    { endpoint: (vars) => ({ path: `/course/${(vars as any).id}`, method: 'DELETE' }), invalidateKeys: [['courses']] },
   );
 
   async function handleCreateCourse(payload: { courseName: string; syllabusContent?: string | null; instructorId: number }) {
