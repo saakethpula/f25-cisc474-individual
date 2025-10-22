@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import LoginButton from '../components/LoginButton';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -7,13 +8,12 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   return (
     <main>
+
       <h1 className="loginHeader">Login</h1>
-      <p className="loginSubtext">Please enter your credentials to log in.</p>
+      <p className="loginSubtext">Please click the login button to access the LMS</p>
       <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '2rem' }}>
-        <input className="textInput" type="text" placeholder="Username" />
-        <input className="textInput" type="password" placeholder="Password" />
-        <a href="/dashboard" className="button" aria-label="Login">Login</a>
+              <LoginButton />
       </form>
-    </main>
+    </main> 
   );
 }

@@ -17,6 +17,8 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@types/passport-auth0": "^1.0.9",
+    "@types/passport-jwt": "^4.0.1",
     "prettier": "^3.6.2",
     "prisma": "latest",
     "tsx": "^4.20.5",
@@ -31,9 +33,15 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@nestjs/jwt": "^11.0.1",
+    "@nestjs/passport": "^11.0.5",
     "@prisma/client": "latest",
     "@tanstack/react-query-devtools": "^5.90.2",
-    "nvm": "^0.0.4"
+    "jwks-rsa": "^3.2.0",
+    "nvm": "^0.0.4",
+    "passport": "^0.7.0",
+    "passport-auth0": "^1.4.4",
+    "passport-jwt": "^4.0.1"
   },
   "packageManager": "npm@10.9.0",
   "workspaces": [

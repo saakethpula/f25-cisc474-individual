@@ -1,11 +1,17 @@
 import { Controller, Get, Param, Post, Body, Patch, Delete } from '@nestjs/common';
 import { CourseService } from './course.service';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { CurrentUser } from '../auth/current-user.decorator';
+
 @Controller('course')
+@UseGuards(AuthGuard('jwt'))
 export class CourseController {
     constructor(private courseService: CourseService) { }
 
     @Get()
-    findAll() {
+    findAll(@CurrentUser() user: any) {
+        console.log('Current user:', user);
         return this.courseService.findAll();
     }
 
