@@ -12,7 +12,7 @@ export const getRouter = () => {
 
   const redirect_uri =
     typeof window !== 'undefined'
-      ? window.location.origin + '/dashboard'
+      ? window.location.origin + '/courses'
       : undefined;
 
   const router = createRouter({

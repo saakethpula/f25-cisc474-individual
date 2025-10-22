@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-import type { ReactNode } from 'react';
 import {
   Outlet,
   createRootRouteWithContext,
@@ -11,6 +10,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools';
 import TanStackQueryDevtools from '../integrations/devtools';
 import appCss from '../styles.css?url';
 import type { QueryClient } from '@tanstack/react-query';
+import type { ReactNode } from 'react';
 
 export interface MyRouterContext {
   queryClient: QueryClient;

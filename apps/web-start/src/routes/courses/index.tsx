@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useApiMutation, useApiQuery } from '../../integrations/api';
 
 type Course = { id: number; courseName: string; syllabusContent?: string | null; instructorId?: number };
 
@@ -9,7 +11,6 @@ export const Route = createFileRoute('/courses/')({
 
 function RouteComponent() {
   const [courses, setCourses] = useState<Array<Course> | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'view' | 'update' | 'delete'>('view');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -19,70 +20,40 @@ function RouteComponent() {
   const [formErrors, setFormErrors] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
+  const { loginWithRedirect } = useAuth0();
+
+  const coursesQuery = useApiQuery<Array<Course>>(['courses'], '/courses');
+
   useEffect(() => {
-    const controller = new AbortController();
+    setError(coursesQuery.error ? String((coursesQuery.error as any)?.message ?? coursesQuery.error) : null);
+    setCourses(coursesQuery.data ?? null);
+  }, [coursesQuery.error, coursesQuery.data]);
 
-    (async () => {
-      try {
-        const res = await fetch('https://f25-cisc474-individual-234i.onrender.com/course', { signal: controller.signal });
-        if (!res.ok) throw new Error(`Failed to fetch courses: ${res.status}`);
-        const data: Array<Course> = await res.json();
-        setCourses(data);
-      } catch (err: unknown) {
-        const e = err as { name?: string; message?: string };
-        if (e.name === 'AbortError') return;
-        setError(e.message ?? String(err));
-      } finally {
-        setLoading(false);
-      }
-    })();
+  // reload handled automatically by react-query invalidation
 
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  // Use mutations that invalidate the ['courses'] key on success
+  const createMutation = useApiMutation<{ courseName: string; syllabusContent?: string | null; instructorId: number }>(
+    { path: '/courses', method: 'POST', invalidateKeys: [['courses']] },
+  );
 
-  async function reloadCourses() {
-    setLoading(true);
-    try {
-      const res = await fetch('https://f25-cisc474-individual-234i.onrender.com/course');
-      if (!res.ok) throw new Error(`Failed to fetch courses: ${res.status}`);
-      const data: Array<Course> = await res.json();
-      setCourses(data);
-    } catch (err: unknown) {
-      const e = err as { message?: string };
-      setError(e.message ?? String(err));
-    } finally {
-      setLoading(false);
-    }
-  }
+  const updateMutation = useApiMutation<{ id: number; courseName?: string; syllabusContent?: string | null }, unknown>(
+    { endpoint: (vars) => ({ path: `/courses/${(vars as any).id}`, method: 'PATCH' }), invalidateKeys: [['courses']] },
+  );
+
+  const deleteMutation = useApiMutation<{ id: number }, unknown>(
+    { endpoint: (vars) => ({ path: `/courses/${(vars as any).id}`, method: 'DELETE' }), invalidateKeys: [['courses']] },
+  );
 
   async function handleCreateCourse(payload: { courseName: string; syllabusContent?: string | null; instructorId: number }) {
-    const res = await fetch('https://f25-cisc474-individual-234i.onrender.com/course', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error(`Create failed: ${res.status}`);
-    await reloadCourses();
+    await createMutation.mutateAsync(payload);
   }
 
   async function handleUpdateCourse(id: number, payload: { courseName?: string; syllabusContent?: string | null }) {
-    const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/course/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error(`Update failed: ${res.status}`);
-    await reloadCourses();
+    await updateMutation.mutateAsync({ ...payload, id });
   }
 
   async function handleDeleteCourse(id: number) {
-    const res = await fetch(`https://f25-cisc474-individual-234i.onrender.com/course/${id}`, {
-      method: 'DELETE',
-    });
-    if (!res.ok) throw new Error(`Delete failed: ${res.status}`);
-    await reloadCourses();
+    await deleteMutation.mutateAsync({ id });
   }
 
   return (
@@ -101,8 +72,14 @@ function RouteComponent() {
 
         {/* Floating action buttons rendered at bottom-right */}
 
-        {loading && <div className="fallback">Loading courses...</div>}
+        {!coursesQuery.isAuthPending && !coursesQuery.isEnabled && (
+          <div className="coursesGrid"><p className="error">You must be logged in to view courses. <button onClick={() => loginWithRedirect()} style={{ marginLeft: 8, padding: '6px 10px', borderRadius: 6, border: 'none', background: '#0b74de', color: 'white' }}>Login</button></p></div>
+        )}
+
+        {coursesQuery.showLoading && <div className="fallback">Loading courses...</div>}
+
         {error && <div className="coursesGrid"><p className="error">Error loading courses: {error}</p></div>}
+
         {courses && (
           <div className="coursesGrid">
             {courses.map((c) => (
