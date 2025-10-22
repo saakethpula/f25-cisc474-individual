@@ -1,8 +1,0 @@
-[
-  { "id": "1", "task": "Finish assignment 1" },
-  { "id": "2", "task": "Review lecture slides" },
-  { "id": "3", "task": "Prepare for quiz" },
-  { "id": "4", "task": "Read course material" },
-  { "id": "5", "task": "Message instructor" },
-  { "id": "6", "task": "Check grades" }
-]

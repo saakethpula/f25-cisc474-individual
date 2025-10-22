@@ -20,8 +20,7 @@ function RouteComponent() {
   const [formErrors, setFormErrors] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
-  const { loginWithRedirect } = useAuth0();
-
+  const { loginWithRedirect , user} = useAuth0();
   // Use auth-aware query to fetch courses. The backend path here is '/course'
   const coursesQuery = useApiQuery<Array<Course>>(['courses'], '/course');
 
@@ -66,7 +65,7 @@ function RouteComponent() {
 
       <div className="mainContent">
         <h1 className="mainHeader">Courses</h1>
-        <p className="mainDescription">Welcome to the Courses page.</p>
+        <p className="mainDescription">{user?.given_name}, welcome to the Courses page.</p>
 
         {!coursesQuery.isAuthPending && !coursesQuery.isEnabled && (
           <div className="coursesGrid"><p className="error">You must be logged in to view courses. <button onClick={() => loginWithRedirect()} style={{ marginLeft: 8, padding: '6px 10px', borderRadius: 6, border: 'none', background: '#0b74de', color: 'white' }}>Login</button></p></div>
