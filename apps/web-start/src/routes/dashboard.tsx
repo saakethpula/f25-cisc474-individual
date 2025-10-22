@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import courses from '../data/courses.json';
 import todoList from '../data/todoList.json';
 import '../styles.css';
+import AuthDebug from '../components/AuthDebug';
 
 export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
@@ -72,6 +73,8 @@ function RouteComponent() {
           ))}
         </ul>
       </aside>
+      {/* Dev-only auth debug panel (show with ?authdebug) */}
+      {typeof window !== 'undefined' && window.location.search.includes('authdebug') && <AuthDebug />}
     </main>
   );
 }
