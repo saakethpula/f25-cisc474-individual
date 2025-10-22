@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/settings')({ component: RouteComponent });
 
@@ -6,11 +6,11 @@ function RouteComponent() {
   return (
     <main className="settingsContainer">
       <nav className="leftNav">
-        <a href="/" className="loginBtn" aria-label="Login">:)</a>
-        <a href="/dashboard"> Dashboard</a>
-        <a href="/courses"> Courses</a>
-        <a href="/messages"> Messages</a>
-        <a href="/settings"> Settings</a>
+        <Link to="/" className="loginBtn" aria-label="Login">:)</Link>
+        <Link to="/dashboard"> Dashboard</Link>
+        <Link to="/courses"> Courses</Link>
+        <Link to="/messages"> Messages</Link>
+        <Link to="/settings"> Settings</Link>
       </nav>
       <div className="mainContent">
         <h1 className="mainHeader">Settings</h1>

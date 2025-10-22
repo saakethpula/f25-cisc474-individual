@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useApiMutation, useApiQuery } from '../../integrations/api';
@@ -30,9 +30,6 @@ function RouteComponent() {
     setCourses(coursesQuery.data ?? null);
   }, [coursesQuery.error, coursesQuery.data]);
 
-  // reload handled automatically by react-query invalidation
-
-  // Use mutations that invalidate the ['courses'] key on success
   const createMutation = useApiMutation<{ courseName: string; syllabusContent?: string | null; instructorId: number }>(
     { path: '/course', method: 'POST', invalidateKeys: [['courses']] },
   );
@@ -60,18 +57,16 @@ function RouteComponent() {
   return (
     <main className="coursesContainer">
       <nav className="leftNav">
-        <a href="/" className="loginBtn" aria-label="Login">:)</a>
-        <a href="/dashboard"> Dashboard</a>
-        <a href="/courses"> Courses</a>
-        <a href="/messages"> Messages</a>
-        <a href="/settings"> Settings</a>
+        <Link to="/" className="loginBtn" aria-label="Login">:)</Link>
+        <Link to="/dashboard"> Dashboard</Link>
+        <Link to="/courses"> Courses</Link>
+        <Link to="/messages"> Messages</Link>
+        <Link to="/settings"> Settings</Link>
       </nav>
 
       <div className="mainContent">
         <h1 className="mainHeader">Courses</h1>
         <p className="mainDescription">Welcome to the Courses page.</p>
-
-        {/* Floating action buttons rendered at bottom-right */}
 
         {!coursesQuery.isAuthPending && !coursesQuery.isEnabled && (
           <div className="coursesGrid"><p className="error">You must be logged in to view courses. <button onClick={() => loginWithRedirect()} style={{ marginLeft: 8, padding: '6px 10px', borderRadius: 6, border: 'none', background: '#0b74de', color: 'white' }}>Login</button></p></div>
@@ -83,30 +78,44 @@ function RouteComponent() {
 
         {courses && (
           <div className="coursesGrid">
-            {courses.map((c) => (
-              <div key={c.id} className="courseSquare" style={{ cursor: 'pointer' }} onClick={() => {
-                if (mode === 'delete') {
-                  setSelectedCourse(c);
-                  // show delete confirmation
-                  if (confirm(`Delete course "${c.courseName}"? This cannot be undone.`)) {
-                    handleDeleteCourse(c.id);
-                  }
-                } else if (mode === 'update') {
-                  setSelectedCourse(c);
-                  setFormName(c.courseName);
-                  setFormSyllabus(c.syllabusContent ?? '');
-                  setShowForm(true);
-                } else {
-                  // view mode: navigate
-                  window.location.href = `/courses/${c.id}`;
-                }
-              }}>
-                {c.courseName}
-              </div>
-            ))}
+            {courses.map((c) => {
+              if (mode === 'delete') {
+                return (
+                  <div key={c.id} className="courseSquare" style={{ cursor: 'pointer' }} onClick={() => {
+                    setSelectedCourse(c);
+                    if (confirm(`Delete course "${c.courseName}"? This cannot be undone.`)) {
+                      handleDeleteCourse(c.id);
+                    }
+                  }}>
+                    {c.courseName}
+                  </div>
+                );
+              }
+
+              if (mode === 'update') {
+                return (
+                  <div key={c.id} className="courseSquare" style={{ cursor: 'pointer' }} onClick={() => {
+                    setSelectedCourse(c);
+                    setFormName(c.courseName);
+                    setFormSyllabus(c.syllabusContent ?? '');
+                    setShowForm(true);
+                  }}>
+                    {c.courseName}
+                  </div>
+                );
+              }
+
+              // view mode - client-side Link navigation
+              return (
+                <Link key={c.id} to={("/courses/" + String(c.id)) as any}>
+                  <div className="courseSquare" style={{ cursor: 'pointer' }}>{c.courseName}</div>
+                </Link>
+              );
+            })}
           </div>
         )}
 
+        {/* The create/update form and action buttons */}
         {showForm && (
           <div>
             <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1100 }} onClick={() => { if (!saving) { setShowForm(false); setSelectedCourse(null); } }} />
@@ -155,14 +164,13 @@ function RouteComponent() {
             </div>
           </div>
         )}
-        {/* Floating action buttons: Create, Update, Delete */}
+
         <div style={{ position: 'fixed', right: 20, bottom: 20, display: 'flex', flexDirection: 'column', gap: 8, zIndex: 1000 }}>
           <button aria-label="Create course" title="Create" onClick={() => { setSelectedCourse(null); setFormName(''); setFormSyllabus(''); setShowForm(true); setMode('view'); }} style={{ padding: '10px 14px', borderRadius: 8, background: '#0b74de', color: 'white', border: 'none' }}>Create</button>
           <button aria-label="Update course" title="Update" onClick={() => { setMode((m) => m === 'update' ? 'view' : 'update'); }} style={{ padding: '10px 14px', borderRadius: 8, background: mode === 'update' ? '#c97d2c' : '#f0ad4e', color: 'white', border: 'none' }}>{mode === 'update' ? 'Updating...' : 'Update'}</button>
           <button aria-label="Delete course" title="Delete" onClick={() => { setMode((m) => m === 'delete' ? 'view' : 'delete'); }} style={{ padding: '10px 14px', borderRadius: 8, background: mode === 'delete' ? '#a94442' : '#d9534f', color: 'white', border: 'none' }}>{mode === 'delete' ? 'Deleting...' : 'Delete'}</button>
         </div>
 
-        {/* Mode hint */}
         {mode !== 'view' && (
           <div style={{ position: 'fixed', right: 20, bottom: 180, background: 'rgba(0,0,0,0.7)', color: 'white', padding: '8px 12px', borderRadius: 8, zIndex: 1000 }}>
             <span style={{ marginRight: 12 }}>{mode === 'update' ? 'Update mode: click a course to edit' : 'Delete mode: click a course to delete'}</span>

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import '../../styles.css';
 
@@ -92,11 +92,11 @@ function RouteComponent(props: any) {
   return (
     <main className="coursesContainer">
       <nav className="leftNav">
-        <a href="/" className="loginBtn" aria-label="Login">:)</a>
-        <a href="/dashboard"> Dashboard</a>
-        <a href="/courses"> Courses</a>
-        <a href="/messages"> Messages</a>
-        <a href="/settings"> Settings</a>
+        <Link to="/" className="loginBtn" aria-label="Login">:)</Link>
+        <Link to="/dashboard"> Dashboard</Link>
+        <Link to="/courses"> Courses</Link>
+        <Link to="/messages"> Messages</Link>
+        <Link to="/settings"> Settings</Link>
       </nav>
 
       <div className="mainContent">
@@ -114,7 +114,7 @@ function RouteComponent(props: any) {
           <div className="coursesGrid">
             {assignments.map((a) => (
               <div key={a.id} className="courseSquare">
-                <a href={`/courses/${id}/assignment-${a.id}`} className="assignmentLink">{a.assignmentTitle}</a>
+                <Link to={(`/courses/${id}/assignment-${a.id}`) as any} className="assignmentLink">{a.assignmentTitle}</Link>
               </div>
             ))}
           </div>

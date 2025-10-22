@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import courses from '../data/courses.json';
 import todoList from '../data/todoList.json';
@@ -12,16 +12,39 @@ export const Route = createFileRoute('/dashboard')({
 function RouteComponent() {
 
   const { user, isAuthenticated, isLoading } = useAuth0();
+  // Show a loading state while the Auth0 SDK initializes
+  if (isLoading) {
+    return (
+      <main className="dashboardContainer">
+        <div className="mainContent">
+          <h1 className="mainHeader">Dashboard</h1>
+          <p className="mainDescription">Loading authentication status...</p>
+        </div>
+      </main>
+    );
+  }
 
+  // If the user is not authenticated, show a friendly prompt instead of rendering nothing
+  if (!isAuthenticated) {
+    return (
+      <main className="dashboardContainer">
+        <div className="mainContent">
+          <h1 className="mainHeader">Dashboard</h1>
+          <p className="mainDescription">You must be logged in to view the dashboard. Please log in first.</p>
+        </div>
+      </main>
+    );
+  }
+
+  // Authenticated: render the dashboard
   return (
-    isAuthenticated &&
     <main className="dashboardContainer">
       <nav className="leftNav">
-        <a href="/" className="loginBtn" aria-label="Login">:)</a>
-        <a href="/dashboard"> Dashboard</a>
-        <a href="/courses"> Courses</a>
-        <a href="/messages"> Messages</a>
-        <a href="/settings"> Settings</a>
+        <Link to="/" className="loginBtn" aria-label="Login">:)</Link>
+        <Link to="/dashboard"> Dashboard</Link>
+        <Link to="/courses"> Courses</Link>
+        <Link to="/messages"> Messages</Link>
+        <Link to="/settings"> Settings</Link>
       </nav>
 
       <div className="mainContent">

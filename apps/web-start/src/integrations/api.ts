@@ -24,9 +24,12 @@ export function useApiClient() {
 
   const getToken = async (scope?: string) => {
     try {
-      return await getAccessTokenSilently({
+      const token = await getAccessTokenSilently({
         authorizationParams: { audience: AUDIENCE, scope },
       });
+      // Debug: log whether we obtained a token (do not log the token value in production)
+      console.debug('[useApiClient] obtained token?', Boolean(token), { audience: AUDIENCE, scope });
+      return token;
     } catch (e: any) {
       if (e?.error === 'consent_required' || e?.error === 'login_required') {
         await loginWithRedirect({
@@ -45,6 +48,8 @@ export function useApiClient() {
     init: RequestInit & { scope?: string } = {},
   ): Promise<T> => {
     const token = await getToken(init.scope);
+    // Debug: show outgoing request metadata (do not expose tokens in logs)
+    console.debug('[useApiClient] requesting', { url: `${BASE_URL}${path}`, hasToken: Boolean(token), scope: init.scope });
     const res = await fetch(`${BASE_URL}${path}`, {
       ...init,
       headers: {
@@ -54,7 +59,10 @@ export function useApiClient() {
       },
       credentials: 'include',
     });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    if (!res.ok) {
+      console.warn('[useApiClient] request failed', { url: `${BASE_URL}${path}`, status: res.status, statusText: res.statusText });
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
     return (await res.json()) as T;
   };
 
