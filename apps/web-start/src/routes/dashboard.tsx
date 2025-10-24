@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import '../styles.css';
+import LogoutButton from '../components/LogoutButton';
 
 export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
@@ -43,6 +44,7 @@ function RouteComponent() {
         <Link to="/courses"> Courses</Link>
         <Link to="/messages"> Messages</Link>
         <Link to="/settings"> Settings</Link>
+        <LogoutButton />
       </nav>
 
       <div className="mainContent">

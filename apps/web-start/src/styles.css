@@ -1,12 +1,29 @@
 /* Basic reset and typography */
 /* If you are using Tailwind, keep @import; otherwise it's safe to remove. */
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Pastel light-blue palette */
+    --bg: #f3f9ff; /* page background */
+    --surface: #ffffff; /* cards */
+    --primary: #7fb7ff; /* soft pastel blue */
+    --primary-600: #7fb7ff; /* slightly stronger */
+    --muted: #e6f4ff; /* light accents */
+    --card-border: #c7e4ff; /* card borders */
+    --text: #153245; /* soft navy for text */
+    --muted-text: #56707e; /* secondary text */
+    --on-primary: #ffffff; /* text on primary backgrounds */
+    --button-bg: #7fb7ff;
+}
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--bg);
+    color: var(--text);
 }
 
 code {
@@ -29,23 +46,25 @@ code {
     align-items: flex-start;
     gap: 1rem;
     z-index: 1000;
-    background: #414141ff;
-    color: #ffffffff;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%);
+    color: var(--on-primary);
     width: 150px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 .loginBtn {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #414141ff;
-    border: 1px solid gray;
+    background: var(--button-bg);
+    border: 1px solid rgba(21,50,69,0.06);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     margin-top: 1rem;
+    color: var(--on-primary);
 }
 
 .mainContent {
@@ -55,15 +74,17 @@ code {
 
 .mainHeader {
     text-align: center;
-    color: #ffffffff;
-    background: #414141ff;
+    color: var(--on-primary);
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-600) 100%);
     font-size: 2rem;
+    padding: 1rem 0.5rem;
+    font-weight: 600;
 }
 
 .mainDescription {
     text-align: center;
-    color: #000000ff;
-    font-size: 1.3rem;
+    color: var(--muted-text);
+    font-size: 1.15rem;
 }
 
 /* Grid and card styles */
@@ -75,13 +96,13 @@ code {
     justify-items: center;
     margin-left: 1rem;
     margin-right: 1rem;
-    color: #222;
-    font-size: 1.3rem;
+    color: var(--text);
+    font-size: 1.15rem;
 }
 
 .courseSquare {
-    background: #dfdfdf;
-    border: 2px solid #414141ff;
+    background: var(--surface);
+    border: 1.5px solid var(--card-border);
     border-radius: 16px;
     padding: 1.2rem 1rem;
     min-width: 180px;
@@ -95,40 +116,43 @@ code {
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-shadow: 0 6px 18px rgba(31, 75, 112, 0.06);
 }
 
 .courseName {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.4rem;
 }
 
 .courseGrade {
-    color: #222;
-    font-size: 1rem;
+    color: var(--muted-text);
+    font-size: 0.95rem;
 }
 
 /* To-do / sidebar */
 .toDoList {
     width: 20%;
     right: 2rem;
-    background: #414141ff;
-    border: 1.5px solid #414141ff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    background: linear-gradient(180deg, var(--muted) 0%, var(--surface) 100%);
+    border: 1.5px solid var(--card-border);
+    box-shadow: 0 6px 18px rgba(31, 75, 112, 0.04);
     z-index: 1000;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    padding: 0.75rem;
 }
 
 .toDoHeader {
     text-align: center;
     margin: 0;
-    font-size: 1.3rem;
-    color: #ffffffff;
-    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-top: 0.5rem;
+    font-weight: 600;
 }
 
 .toDoListItemsContainer {
@@ -138,58 +162,59 @@ code {
 }
 
 .toDoListItems {
-    color: white;
-    font-size: 1.5rem;
+    color: var(--text);
+    font-size: 1.1rem;
 }
 
 /* Grades table */
-.gradesTable { width: 100%; margin-top: 2rem; color: black; }
-.gradesRow { display: flex; color: black; }
-.gradesHeader { font-weight: bold; background: #f8f8f8; color: black; }
-.gradesCell { flex: 1; border: 1.5px solid #414141; padding: 1rem; text-align: center; background: #fff; color: black; }
-.gradesHeader .gradesCell { background: #f8f8f8; }
+.gradesTable { width: 100%; margin-top: 2rem; color: var(--text); }
+.gradesRow { display: flex; color: var(--text); }
+.gradesHeader { font-weight: 600; background: var(--muted); color: var(--text); }
+.gradesCell { flex: 1; border: 1.5px solid var(--card-border); padding: 1rem; text-align: center; background: var(--surface); color: var(--text); }
+.gradesHeader .gradesCell { background: var(--muted); }
 
 .navButtons { position: fixed; bottom: 2rem; right: 2rem; display: flex; gap: 1rem; z-index: 100; }
 
-.fallback { color: #222; }
+.fallback { color: var(--text); }
 
 /* Messages */
-.messageSubject { font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem; }
-.messageBody { font-size: 1rem; }
-.messagesList { list-style: none; padding: 0; margin: 0; background-color: lightgray; }
+.messageSubject { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text); }
+.messageBody { font-size: 0.98rem; color: var(--muted-text); }
+.messagesList { list-style: none; padding: 0; margin: 0; background-color: var(--muted); }
 
 /* Settings */
-.assignmentLinkText { text-align: center; color: #000000ff; font-size: 1.3rem; margin-top: 1rem; }
-.assignmentLink { text-align: center; color: blue; font-size: 1.3rem; margin-top: 1rem; }
+.assignmentLinkText { text-align: center; color: var(--muted-text); font-size: 1.15rem; margin-top: 1rem; }
+.assignmentLink { text-align: center; color: var(--primary-600); font-size: 1.15rem; margin-top: 1rem; }
 
 /* Login page styles (from original Next app) */
 .loginHeader {
-    font-size: 48px;
-    line-height: 56px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     text-align: center;
-    color: #383838;
-    margin-top: 48px;
+    color: var(--text);
+    margin-top: 40px;
 }
 
 .loginSubtext {
     text-align: center;
-    color: #666;
-    font-size: 16px;
+    color: var(--muted-text);
+    font-size: 15px;
 }
 
 .textInput {
     width: 320px;
     padding: 12px 14px;
-    border-radius: 8px;
-    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
     font-size: 16px;
+    background: var(--surface);
 }
 
 .button {
     appearance: none;
-    border-radius: 128px;
+    border-radius: 999px;
     height: 48px;
     padding: 0 20px;
     border: none;
@@ -199,8 +224,21 @@ code {
     justify-content: center;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 500;
-    background: #383838;
-    color: #fff;
+    font-weight: 600;
+    background: var(--button-bg);
+    color: var(--on-primary);
     text-decoration: none;
+    box-shadow: 0 6px 16px rgba(127, 183, 255, 0.18);
+}
+
+.logoutContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    border-radius: 8px;
+    background-color: var(--muted);
+    padding: 0.75rem;
 }
